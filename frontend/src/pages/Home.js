@@ -1,12 +1,21 @@
-import React from 'react'
+import React, { useState } from 'react'
+import HeroSection from '../components/HeroSection'
 import NavBar from '../components/NavBar'
+import SideBar from '../components/SideBar'
 import GlobalStyle from '../styles/globalStyles'
 
 const Home = () => {
+  const [isOpen, setIsOpen] = useState(false)
+  const toggle = () => {
+    setIsOpen(!isOpen)
+  }
+
   return (
     <>
       <GlobalStyle />
-      <NavBar />
+      <SideBar isOpen={isOpen} toggle={toggle} />
+      <NavBar toggle={toggle} />
+      <HeroSection />
     </>
   )
 }

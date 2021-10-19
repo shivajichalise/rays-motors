@@ -9,15 +9,14 @@ import { MdLocationOn, MdPhone } from 'react-icons/md'
 
 const Nav = styled.nav`
   background: #fff;
-  height: 80px;
+  height: 65px;
   display: flex;
   justify-content: center;
   align-items: center;
   font-size: 1rem;
   position: sticky;
   z-index: 10;
-  box-shadow: 5px 10px 18px #888888;
-
+  box-shadow: 0 10px 10px #000;
   @media screen (max-width: 960px) {
     transition: 0.8s all ease;
   }
@@ -25,7 +24,7 @@ const Nav = styled.nav`
 
 const Bar = styled.div`
   background: #f2f2f2;
-  height: 30px;
+  height: 25px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -175,7 +174,7 @@ const NavBtnLink = styled(LinkR)`
   }
 `
 
-const NavBar = () => {
+const NavBar = ({ toggle }) => {
   return (
     <>
       <Bar>
@@ -205,7 +204,7 @@ const NavBar = () => {
           <NavImgLogo>
             <LogoImg src={Logo} alt="Rays Motors Logo" />
           </NavImgLogo>
-          <MobileIcon>
+          <MobileIcon onClick={toggle}>
             <Hamburger />
           </MobileIcon>
           <NavMenu>
