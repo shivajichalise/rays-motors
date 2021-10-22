@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useEffect, useCallback } from 'react'
 import styled, { css } from 'styled-components/macro'
 import { Link as LinkS } from 'react-scroll'
 import { Link as LinkR } from 'react-router-dom'
@@ -8,29 +8,32 @@ import { FaBars as Hamburger } from 'react-icons/fa'
 import { MdLocationOn, MdPhone } from 'react-icons/md'
 
 const Nav = styled.nav`
+  width: 100vw;
+  height: 90px;
+  border: 1px solid #c3c3c3;
   background: #fff;
-  height: 65px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 1rem;
   position: sticky;
-  z-index: 10;
-  box-shadow: 0 10px 10px #000;
-  @media screen (max-width: 960px) {
-    transition: 0.8s all ease;
-  }
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  // visibility: ${({ showNav }) => !showNav && 'hidden'};
+  transition: 0.5s all ease;
+  transform: translateY(${({ showNav }) => !showNav && '-100vh'});
+  font-size: 1rem;
+  position: fixed;
+  z-index: 1;
 `
 
 const Bar = styled.div`
-  background: #f2f2f2;
-  height: 25px;
+  width: 100%;
+  height: 30px;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  background: #f2f2f2;
   font-size: 0.8rem;
-  top: 0;
-  padding: 1rem 1rem;
+  padding: 0 1rem;
 
   @media screen and (max-width: 768px) {
     font-size: 0.6em;
@@ -41,7 +44,6 @@ const BarCss = css`
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 25px;
   color: #e26313;
 `
 
@@ -70,13 +72,12 @@ const PhoneLink = styled.a`
 `
 
 const NavbarContainer = styled.div`
+  width: 100%;
+  height: 60px;
   display: flex;
   justify-content: space-between;
-  height: 80px;
-  z-index: 1;
-  width: 100%;
-  padding: 0 24px;
-  max-width: 1100px;
+  align-items: center;
+  padding: 0 2rem;
 `
 
 const NavImgLogo = styled.div`
@@ -107,7 +108,7 @@ const MobileIcon = styled.div`
     position: absolute;
     top: 0;
     right: 0;
-    transform: translate(-100%, 60%);
+    transform: translate(-100%, 100%);
     font-size: 1.8rem;
     cursor: pointer;
     color: #e26313;
@@ -165,7 +166,6 @@ const NavBtnLink = styled(LinkR)`
   outline: none;
   border: none;
   cursor: pointer;
-  transition: all 0.2s ease-in-out;
   text-decoration: none;
 
   &:hover {
@@ -175,8 +175,35 @@ const NavBtnLink = styled(LinkR)`
 `
 
 const NavBar = ({ toggle }) => {
+  const [y, setY] = useState(window.scrollY)
+  const [showNav, setShowNav] = useState(true)
+
+  const handleNavigation = useCallback(
+    (e) => {
+      const window = e.currentTarget
+      if (y > window.scrollY) {
+        //scroll up
+        setShowNav(true)
+      } else if (y < window.scrollY) {
+        //scroll down
+        setShowNav(false)
+      }
+      setY(window.scrollY)
+    },
+    [y]
+  )
+
+  useEffect(() => {
+    setY(window.scrollY)
+    window.addEventListener('scroll', handleNavigation)
+
+    return () => {
+      window.removeEventListener('scroll', handleNavigation)
+    }
+  }, [handleNavigation])
+
   return (
-    <>
+    <Nav showNav={showNav}>
       <Bar>
         <Phone>
           <MdPhone />
@@ -198,28 +225,26 @@ const NavBar = ({ toggle }) => {
           </AddressLink>
         </Address>
       </Bar>
-      <Nav>
-        <NavbarContainer>
-          {/* <NavLogo to="/">Rays</NavLogo> */}
-          <NavImgLogo>
-            <LogoImg src={Logo} alt="Rays Motors Logo" />
-          </NavImgLogo>
-          <MobileIcon onClick={toggle}>
-            <Hamburger />
-          </MobileIcon>
-          <NavMenu>
-            {navData.map((item, index) => (
-              <NavItem key={index}>
-                <NavLinks to={item.link}>{item.title}</NavLinks>
-              </NavItem>
-            ))}
-          </NavMenu>
-          <NavBtn>
-            <NavBtnLink to="/contact">Contact Us</NavBtnLink>
-          </NavBtn>
-        </NavbarContainer>
-      </Nav>
-    </>
+      <NavbarContainer>
+        {/* <NavLogo to="/">Rays</NavLogo> */}
+        <NavImgLogo>
+          <LogoImg src={Logo} alt="Rays Motors Logo" />
+        </NavImgLogo>
+        <MobileIcon onClick={toggle}>
+          <Hamburger />
+        </MobileIcon>
+        <NavMenu>
+          {navData.map((item, index) => (
+            <NavItem key={index}>
+              <NavLinks to={item.link}>{item.title}</NavLinks>
+            </NavItem>
+          ))}
+        </NavMenu>
+        <NavBtn>
+          <NavBtnLink to="/contact">Contact Us</NavBtnLink>
+        </NavBtn>
+      </NavbarContainer>
+    </Nav>
   )
 }
 

@@ -3,14 +3,10 @@ import styled from 'styled-components'
 import Image from '../images/dmax.jpg'
 
 const HeroContainer = styled.div`
-  background: #0c0c0c;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 0 30px;
-  height: 560px;
+  height: 100vh;
+  max-height: 1100px;
   position: relative;
-  z-index: 1;
+  overflow: hidden;
 
   /* Add :before styles */
 `

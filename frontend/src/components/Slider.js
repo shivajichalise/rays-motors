@@ -1,12 +1,17 @@
-import React, { useState, useRef, Fragment } from 'react'
+import React, { useState, useEffect, useRef, Fragment } from 'react'
 import styled, { css } from 'styled-components/macro'
 // import img from '../images/cars/1.jpg'
 import { MdArrowRight, MdArrowLeft } from 'react-icons/md'
+import { motion } from 'framer-motion'
 
 const SliderContainer = styled.div`
   height: 100vh;
   width: 100%;
   // background: #f00;
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
 `
 
 const SliderWrapper = styled.div`
@@ -15,16 +20,30 @@ const SliderWrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+
+  @media screen and (max-width: 768px) {
+    height: 100vh;
+  }
 `
 
 const SliderContent = styled.div`
   // background: #0f0;
-  width: 70vw;
+  width: 60vw;
   height: 90vh;
   display: flex;
+  flex-direction: row;
+
+  @media screen and (max-width: 768px) {
+    flex-direction: column;
+  }
+
+  @media screen and (max-width: 1024px) {
+    height: 80%;
+    width: 80%;
+  }
 `
 
-const ImageContent = styled.div`
+const ImageContent = styled(motion.div)`
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -33,8 +52,7 @@ const ImageContent = styled.div`
   width: 50%;
   height: 100%;
   word-wrap: break-word;
-
-  padding: 0 1rem;
+  margin: 0 0 0 2rem;
 
   h1 {
     color: #d55209;
@@ -46,19 +64,44 @@ const ImageContent = styled.div`
     color: #e26313;
     margin-bottom: 2rem;
   }
+
+  @media screen and (max-width: 768px) {
+    width: 100%;
+    height: 30%;
+    order: 2;
+  }
+
+  @media screen and (min-width: 1024px) {
+    width: 25%;
+    padding: 0;
+  }
 `
 
-const ImageWrapper = styled.div`
+const ImageWrapper = styled(motion.div)`
   // background: #0ff;
   width: 50%;
   display: flex;
   justify-content: center;
   align-items: center;
+
+  @media screen and (max-width: 768px) {
+    width: 100%;
+    height: 70%;
+    order: 1;
+  }
+
+  @media screen and (min-width: 1024px) {
+    width: 75%;
+  }
 `
 
 const Image = styled.img`
   object-fit: contain;
   height: 95%;
+
+  @media screen and (min-width: 1024px) {
+    width: 100%;
+  }
 `
 
 const arrowButtons = css`
@@ -72,6 +115,10 @@ const arrowButtons = css`
 
   &:hover {
     transform: scale(1.5);
+  }
+
+  @media screen and (max-width: 768px) {
+    display: none;
   }
 `
 
@@ -88,18 +135,18 @@ const Slider = ({ slides }) => {
   const length = slides.length
   const timeout = useRef(null)
 
-  // useEffect(() => {
-  //   const nextSlide = () => {
-  //     setCurrent((current) => (current === length - 1 ? 0 : current + 1))
-  //   }
+  useEffect(() => {
+    const nextSlide = () => {
+      setCurrent((current) => (current === length - 1 ? 0 : current + 1))
+    }
 
-  //   timeout.current = setTimeout(nextSlide, 1000)
-  //   return function () {
-  //     if (timeout.current) {
-  //       clearTimeout(timeout.current)
-  //     }
-  //   }
-  // }, [current, length])
+    timeout.current = setTimeout(nextSlide, 5000)
+    return function () {
+      if (timeout.current) {
+        clearTimeout(timeout.current)
+      }
+    }
+  }, [current, length])
 
   const nextSlide = () => {
     if (timeout.current) {
@@ -131,11 +178,19 @@ const Slider = ({ slides }) => {
               <Fragment key={index}>
                 {index === current && (
                   <>
-                    <ImageContent>
+                    <ImageContent
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      transition={{ duration: 1 }}
+                    >
                       <h1>{item.title}</h1>
                       <p>{item.price}</p>
                     </ImageContent>
-                    <ImageWrapper>
+                    <ImageWrapper
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      transition={{ duration: 1 }}
+                    >
                       <Image src={item.imgSrc} alt={item.alt} />
                     </ImageWrapper>
                   </>
