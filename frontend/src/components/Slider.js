@@ -23,6 +23,7 @@ const SliderWrapper = styled.div`
 
   @media screen and (max-width: 768px) {
     height: 100vh;
+    align-items: flex-start;
   }
 `
 
@@ -33,13 +34,17 @@ const SliderContent = styled.div`
   display: flex;
   flex-direction: row;
 
-  @media screen and (max-width: 768px) {
-    flex-direction: column;
-  }
-
   @media screen and (max-width: 1024px) {
     height: 80%;
     width: 80%;
+  }
+
+  @media screen and (max-width: 768px) {
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    width: 90vw;
+    height: 100vh;
   }
 `
 
@@ -52,7 +57,6 @@ const ImageContent = styled(motion.div)`
   width: 50%;
   height: 100%;
   word-wrap: break-word;
-  margin: 0 0 0 2rem;
 
   h1 {
     color: #d55209;
@@ -65,15 +69,26 @@ const ImageContent = styled(motion.div)`
     margin-bottom: 2rem;
   }
 
-  @media screen and (max-width: 768px) {
-    width: 100%;
-    height: 30%;
-    order: 2;
+  @media screen and (max-width: 1024px) {
+    width: 30%;
+    padding: 0;
   }
 
-  @media screen and (min-width: 1024px) {
-    width: 25%;
-    padding: 0;
+  @media screen and (max-width: 768px) {
+    width: 90%;
+    height: 40vh;
+    order: 2;
+    align-items: center;
+    margin: 0;
+
+    h1 {
+      margin-bottom: 0.5rem;
+    }
+
+    p {
+      margin-bottom: 0.5rem;
+      text-align: center;
+    }
   }
 `
 
@@ -84,14 +99,14 @@ const ImageWrapper = styled(motion.div)`
   justify-content: center;
   align-items: center;
 
-  @media screen and (max-width: 768px) {
-    width: 100%;
-    height: 70%;
-    order: 1;
+  @media screen and (max-width: 1024px) {
+    width: 70%;
   }
 
-  @media screen and (min-width: 1024px) {
-    width: 75%;
+  @media screen and (max-width: 768px) {
+    width: 90%;
+    height: 60vh;
+    order: 1;
   }
 `
 
@@ -100,7 +115,7 @@ const Image = styled.img`
   height: 95%;
 
   @media screen and (min-width: 1024px) {
-    width: 100%;
+    width: 80%;
   }
 `
 
@@ -184,6 +199,7 @@ const Slider = ({ slides }) => {
                       transition={{ duration: 1 }}
                     >
                       <h1>{item.title}</h1>
+                      <p>{item.desc}</p>
                       <p>{item.price}</p>
                     </ImageContent>
                     <ImageWrapper
