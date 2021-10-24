@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import AboutUs from '../components/AboutUs'
 import HeroSection from '../components/HeroSection'
 import NavBar from '../components/NavBar'
 import SideBar from '../components/SideBar'
@@ -18,6 +19,7 @@ const Home = () => {
       <SideBar isOpen={isOpen} toggle={toggle} />
       <NavBar toggle={toggle} />
       <HeroSection />
+      <AboutUs />
       <Slider slides={sliderData} />
     </>
   )

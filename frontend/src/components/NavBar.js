@@ -10,7 +10,7 @@ import { MdLocationOn, MdPhone } from 'react-icons/md'
 const Nav = styled.nav`
   width: 100vw;
   height: 90px;
-  // border: 1px solid #c3c3c3;
+  border: 1px solid #f2f2f2;
   background: #fff;
   position: sticky;
   display: flex;

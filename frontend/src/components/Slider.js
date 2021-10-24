@@ -183,6 +183,11 @@ const Slider = ({ slides }) => {
     return null
   }
 
+  const fadeLeft = {
+    hidden: { opacity: 0, x: -100 },
+    visible: { opacity: 1, x: 0 },
+  }
+
   return (
     <SliderContainer>
       <SliderWrapper>
@@ -194,7 +199,7 @@ const Slider = ({ slides }) => {
                 {index === current && (
                   <>
                     <ImageContent
-                      initial={{ opacity: 0 }}
+                      initial={{ opacity: 0.5 }}
                       animate={{ opacity: 1 }}
                       transition={{ duration: 1 }}
                     >
@@ -203,8 +208,9 @@ const Slider = ({ slides }) => {
                       <p>{item.price}</p>
                     </ImageContent>
                     <ImageWrapper
-                      initial={{ opacity: 0 }}
-                      animate={{ opacity: 1 }}
+                      variants={fadeLeft}
+                      initial="hidden"
+                      animate="visible"
                       transition={{ duration: 1 }}
                     >
                       <Image src={item.imgSrc} alt={item.alt} />
