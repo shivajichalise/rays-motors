@@ -1,0 +1,66 @@
+/*-- welcome --*/
+.welcome,
+.services,
+.spec,
+.gallery,
+.contact,
+.news {
+  padding: 6em 0;
+}
+h3.agileits-title {
+  font-size: 3.5em;
+  text-transform: uppercase;
+  color: #ea7686;
+  margin-bottom: 1.2em;
+  font-weight: 300;
+  font-family: 'Roboto', sans-serif;
+}
+h3.agileits-title span {
+  border: 2px solid;
+  margin-right: 8px;
+  color: #222;
+  padding: 5px 8px;
+  display: inline-block;
+}
+p {
+  font-size: 1em;
+  color: #999;
+  line-height: 1.8em;
+}
+.welcome-agileinfo {
+  background: #ea7686;
+  margin: 3em 0;
+}
+.w3ls_welcome_left h3.agileits-title {
+  font-size: 3em;
+  margin-bottom: 0.8em;
+  color: #fff;
+}
+.w3ls_welcome_left {
+  padding: 3em;
+}
+.agileits_w3layouts_welcome_grid {
+  margin-top: -2em;
+  margin-bottom: -2em;
+  border: 5px solid #000;
+}
+.w3ls_welcome_right {
+  position: relative;
+  padding: 0 2em 0 0;
+}
+.agileits_w3layouts_welcome_grid img {
+  width: 100%;
+}
+.w3ls_welcome_right1 h6 {
+  font-size: 1.5em;
+  color: #000;
+  line-height: 1.8em;
+  text-transform: capitalize;
+  letter-spacing: 1px;
+}
+.w3ls_welcome_right1 p {
+  margin: 0.8em 0 0;
+  line-height: 2em;
+  color: #fff;
+}
+/*-- //welcome --*/

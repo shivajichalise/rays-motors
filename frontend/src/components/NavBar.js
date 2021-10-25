@@ -236,7 +236,15 @@ const NavBar = ({ toggle }) => {
         <NavMenu>
           {navData.map((item, index) => (
             <NavItem key={index}>
-              <NavLinks to={item.link}>{item.title}</NavLinks>
+              <NavLinks
+                to={item.link}
+                smooth={true}
+                duration={500}
+                spy={true}
+                exact="true"
+              >
+                {item.title}
+              </NavLinks>
             </NavItem>
           ))}
         </NavMenu>

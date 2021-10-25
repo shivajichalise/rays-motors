@@ -99,7 +99,15 @@ const SideBar = ({ isOpen, toggle }) => {
       <SidebarWrapper>
         <SidebarMenu>
           {navData.map((item, index) => (
-            <SidebarLink key={index} to={item.link} onClick={toggle}>
+            <SidebarLink
+              key={index}
+              to={item.link}
+              onClick={toggle}
+              smooth={true}
+              duration={500}
+              spy={true}
+              exact="true"
+            >
               {item.title}
             </SidebarLink>
           ))}

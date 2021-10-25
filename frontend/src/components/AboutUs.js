@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import isuzuLogo from '../images/isuzu-logo.png'
+import isuzuLogo from '../images/isuzu-logo-sqr.png'
 
 const AboutContainer = styled.div`
   background: #f2f2f2;
@@ -12,124 +12,110 @@ const AboutContainer = styled.div`
 `
 
 const AboutWrapper = styled.div`
-  background: #fff;
-  height: 80%;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  // background: #f00;
+  height: 70%;
+  width: 80%;
 
-  @media screen and (max-width: 1024px) {
-    justify-content: space-around;
-  }
+  display: flex;
+  align-items: center;
+  position: relative;
 
   @media screen and (max-width: 768px) {
-    height: 90%;
-  }
-`
-
-const InfoHead = styled.div`
-  background: #e26313;
-  color: #fff;
-  height: 20%;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-
-  @media screen and (max-width: 1024px) {
-    align-items: flex-start;
-
-    h1,
-    p {
-      padding: 0.2rem 1.5rem;
-      font-size: 2rem;
-    }
-
-    @media screen and (max-width: 768px) {
-      height: 32%;
-
-      h1,
-      p {
-        padding: 0.2rem 1rem;
-        font-size: 1rem;
-      }
-    }
+    height: 95%;
+    width: 95%;
   }
 `
 
 const Info = styled.div`
-  background: #f2f2f2;
-  height: 37%;
+  background: #e26313;
   width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  color: #e26313;
+  height: 80%;
 
-  @media screen and (max-width: 1024px) {
-    align-items: flex-start;
-    h2,
-    p {
-      font-size: 2rem;
-      padding: 0.2rem 1.5rem;
-    }
+  display: flex;
+  align-items: center;
 
   @media screen and (max-width: 768px) {
-    height: 43%;
+    height: 100%;
+    flex-direction: column;
+  }
+`
 
-    h2,
-    p {
-      font-size: 1rem;
-    }
+const InfoContent = styled.div`
+  // background: #0ff;
+  width: 50%;
+  word-wrap: break-word;
+  padding: 0 2rem;
+  color: #fff;
+
+  p {
+    margin: 0 0 1.5rem 0;
+  }
+
+  @media screen and (max-width: 768px) {
+    width: 90%;
+    height: 50%;
+    padding: 2rem 0;
+  }
+
+  @media screen and (max-width: 375px) and (max-height: 667px) {
+    font-size: 0.83rem;
+  }
+
+  @media screen and (max-width: 360px) {
+    font-size: 0.85rem;
+  }
+
+  @media screen and (max-width: 320px) {
+    font-size: 0.7rem;
   }
 `
 
 const ImageWrapper = styled.div`
-  background: #f2f2f2;
-  height: 45%;
-  width: 100%;
+  // background: #00f;
+  width: 45%;
+  height: 100%;
   display: flex;
   justify-content: center;
-  align-items: center;
-
-  // @media screen and (max-width: 1024px) {
-  //   height: 20%;
-  // }
+  position: absolute;
+  right: 3%;
 
   @media screen and (max-width: 768px) {
-    height: 25%;
+    bottom: 3%;
+    right: 0;
+    width: 100%;
+    height: 40%;
   }
 `
 
 const Image = styled.img`
-  width: 90%;
   object-fit: contain;
+  width: 90%;
 `
 
 const AboutUs = () => {
   return (
-    <AboutContainer>
+    <AboutContainer id="about">
       <AboutWrapper>
-        <InfoHead>
-          <h1>Who are we ?</h1>
-          <p>
-            We Rays Motors Pvt. Ltd. are the authorized distributor of Isuzu
-            vechicle for Gandaki province of Nepal.
-          </p>
-        </InfoHead>
         <Info>
-          <h2>About ISUZU</h2>
-          <p>Power to "Deliver" for people around the world.</p>
-          <p>
-            ISUZU has the ambitious vision to minimize environmental impacts and
-            secure a prosperous and sustainable society by year 2050.
-          </p>
+          <InfoContent>
+            <h1>Who are we ?</h1>
+            <p>
+              We <strong>Rays Motors Pvt. Ltd.</strong> are the official
+              distributor of ISUZU vechicle for the Gandaki Province (Province
+              No. 4) of Nepal.
+            </p>
+
+            <h3>About ISUZU</h3>
+            <p>
+              ISUZU has the ambitious vision to minimize environmental impacts
+              and secure a prosperous and sustainable society by year 2050.
+            </p>
+
+            <i>Power to "Deliver" for people around the world.</i>
+          </InfoContent>
         </Info>
         <ImageWrapper>
-          <Image src={isuzuLogo} alt="Isuzu Logo" />
+          <Image src={isuzuLogo} alt="ISUZU Logo" />
         </ImageWrapper>
       </AboutWrapper>
     </AboutContainer>
