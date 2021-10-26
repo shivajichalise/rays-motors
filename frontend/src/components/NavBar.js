@@ -143,7 +143,7 @@ const NavLinks = styled(LinkS)`
   text-transform: uppercase;
 
   &.active {
-    border-bottom: 3px solid #e26313;
+    font-weight: 700;
   }
 `
 

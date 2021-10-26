@@ -4,6 +4,7 @@ import HeroSection from '../components/HeroSection'
 import NavBar from '../components/NavBar'
 import SideBar from '../components/SideBar'
 import Slider from '../components/Slider'
+import SplitBanner from '../components/SplitBanner'
 import { sliderData } from '../data/sliderData'
 import GlobalStyle from '../styles/globalStyles'
 
@@ -21,6 +22,7 @@ const Home = () => {
       <HeroSection />
       <AboutUs />
       <Slider slides={sliderData} />
+      <SplitBanner />
     </>
   )
 }
