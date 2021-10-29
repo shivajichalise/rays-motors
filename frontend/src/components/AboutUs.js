@@ -1,9 +1,10 @@
 import React from 'react'
 import styled from 'styled-components'
 import isuzuLogo from '../images/isuzu-logo-sqr.png'
+import { isuzuTheme } from '../styles/theme'
 
 const AboutContainer = styled.div`
-  background: #f2f2f2;
+  background: ${isuzuTheme.background};
   height: 100vh;
   width: 100vw;
   display: flex;
@@ -27,7 +28,7 @@ const AboutWrapper = styled.div`
 `
 
 const Info = styled.div`
-  background: #e26313;
+  background: ${isuzuTheme.card};
   width: 100%;
   height: 80%;
 
@@ -45,10 +46,17 @@ const InfoContent = styled.div`
   width: 50%;
   word-wrap: break-word;
   padding: 0 2rem;
-  color: #fff;
+  color: ${isuzuTheme.text};
 
   p {
-    margin: 0 0 1.5rem 0;
+    margin: 0 0 1rem 0;
+  }
+
+  h1,
+  strong,
+  h3,
+  i {
+    color: ${isuzuTheme.trueRed};
   }
 
   @media screen and (max-width: 768px) {
@@ -101,8 +109,8 @@ const AboutUs = () => {
             <h1>Who are we ?</h1>
             <p>
               We <strong>Rays Motors Pvt. Ltd.</strong> are the official
-              distributor of ISUZU vechicle for the Gandaki Province (Province
-              No. 4) of Nepal.
+              distributor of ISUZU Light Commercial Vehicles for the Gandaki
+              Province (Province No. 4) of Nepal.
             </p>
 
             <h3>About ISUZU</h3>

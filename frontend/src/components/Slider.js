@@ -3,6 +3,7 @@ import styled, { css } from 'styled-components/macro'
 // import img from '../images/cars/1.jpg'
 import { MdArrowRight, MdArrowLeft } from 'react-icons/md'
 import { motion } from 'framer-motion'
+import { isuzuTheme } from '../styles/theme'
 
 const SliderContainer = styled.div`
   height: 100vh;
@@ -59,14 +60,18 @@ const ImageContent = styled(motion.div)`
   word-wrap: break-word;
 
   h1 {
-    color: #d55209;
+    color: ${isuzuTheme.trueRed};
     margin-bottom: 1rem;
     font-size: clamp(1.5rem, 6vw, 2rem);
   }
 
   p {
-    color: #e26313;
+    color: ${isuzuTheme.text};
     margin-bottom: 2rem;
+  }
+
+  p.part2 {
+    color: ${isuzuTheme.red};
   }
 
   @media screen and (max-width: 1024px) {
@@ -122,13 +127,14 @@ const Image = styled.img`
 const arrowButtons = css`
   width: 50px;
   height: 50px;
-  color: #e26313;
+  color: ${isuzuTheme.red};
   cursor: pointer;
   padding: 10px;
   user-select: none;
   transition: 0.3s;
 
   &:hover {
+    color: ${isuzuTheme.trueRed};
     transform: scale(1.5);
   }
 
@@ -205,7 +211,7 @@ const Slider = ({ slides }) => {
                     >
                       <h1>{item.title}</h1>
                       <p>{item.desc}</p>
-                      <p>{item.price}</p>
+                      <p className="part2">{item.price}</p>
                     </ImageContent>
                     <ImageWrapper
                       variants={fadeLeft}

@@ -1,8 +1,9 @@
-import styled from 'styled-components'
+import styled, { css } from 'styled-components/macro'
 import { Link } from 'react-router-dom'
+import { isuzuTheme } from '../styles/theme'
 
-export const Button = styled(Link)`
-  background: ${({ primary }) => (primary ? '#e26313' : '#CD853F')};
+const style = css`
+  background: ${({ primary }) => (primary ? isuzuTheme.red : '#141414')};
   white-space: nowrap;
   outline: none;
   border: none;
@@ -15,10 +16,18 @@ export const Button = styled(Link)`
   justify-content: center;
   align-item: center;
   padding: ${({ big }) => (big ? '16px 40px' : '14px 24px')};
-  color: ${({ primary }) => (primary ? '#fff' : '#000d1a')};
+  color: ${({ primary }) => (primary ? isuzuTheme.white : '#000d1a')};
   font-size: ${({ big }) => (big ? '20px' : '14px')};
 
   &:hover {
     transform: translateY(-2px);
   }
+`
+
+export const ButtonAnchor = styled.a`
+  ${style}
+`
+
+export const ButtonLink = styled(Link)`
+  ${style}
 `

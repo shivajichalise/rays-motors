@@ -3,7 +3,8 @@ import styled from 'styled-components'
 import img1 from '../images/cars/d-max-doubleCab.jpg'
 import img2 from '../images/cars/isuzu-truck-sqr.jpg'
 import { motion } from 'framer-motion'
-import { Button } from './Button'
+import { ButtonAnchor, ButtonLink } from './Button'
+import { isuzuTheme } from '../styles/theme'
 
 const SplitBannerContainer = styled.div`
   // background: #f00;
@@ -68,7 +69,7 @@ const ImageContent = styled(motion.div)`
   word-wrap: break-word;
   display: flex;
   flex-direction: column;
-  color: #fff;
+  color: ${isuzuTheme.white};
   padding: 1.5rem 1.5rem;
 
   h1 {
@@ -81,7 +82,8 @@ const ImageContent = styled(motion.div)`
   }
 
   p {
-    font-weight: 500;
+    font-weight: 600;
+    color: ${isuzuTheme.trueRed};
     text-shadow: 0px 0px 20px rgba(0, 0, 0, 0.4);
   }
 
@@ -104,7 +106,9 @@ const SplitBanner = () => {
           <ImageContent>
             <p>Store</p>
             <h1>Latest Arrivals</h1>
-            <Button primary={true}>Discover</Button>
+            <ButtonLink to="/vehicles" primary="primary">
+              Discover
+            </ButtonLink>
           </ImageContent>
         </LatestVehicle>
         <IsuzuNews>
@@ -117,7 +121,13 @@ const SplitBanner = () => {
           <ImageContent>
             <p>News</p>
             <h1>Know what's happening in ISUZU</h1>
-            <Button primary={true}>Discover</Button>
+            <ButtonAnchor
+              href="https://www.isuzu.co.jp/world/newsroom"
+              target="_blank"
+              primary="primary"
+            >
+              Discover
+            </ButtonAnchor>
           </ImageContent>
         </IsuzuNews>
       </SplitBannerWrapper>

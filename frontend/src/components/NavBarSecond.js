@@ -1,30 +1,26 @@
-import React, { useState, useEffect, useCallback } from 'react'
+import React from 'react'
 import styled, { css } from 'styled-components/macro'
 import { Link as LinkS } from 'react-scroll'
 import { Link as LinkR } from 'react-router-dom'
 // import Logo from '../images/Hiluxplain.svg'
 import { FaBars as Hamburger } from 'react-icons/fa'
 import { MdLocationOn, MdPhone } from 'react-icons/md'
-// import { animateScroll as scroll } from 'react-scroll'
 import { isuzuTheme } from '../styles/theme'
 import '../fonts/usuziv2.ttf'
 
 const Nav = styled.nav`
-  width: 100%;
-  height: 90px;
-  border: 1px solid ${isuzuTheme.grey};
   background: ${isuzuTheme.white};
-  position: sticky;
+  height: 90px;
+  width: 100%;
+  border: 1px solid ${isuzuTheme.grey};
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  // visibility: ${({ showNav }) => !showNav && 'hidden'};
-  transition: 0.5s all ease;
-  transform: translateY(${({ showNav }) => !showNav && '-100vh'});
   font-size: 1rem;
-  position: fixed;
-  z-index: 999;
+  position: sticky;
+  top: 0;
+  z-index: 10;
 `
 
 const Bar = styled.div`
@@ -192,39 +188,8 @@ const NavBtnLink = styled(LinkR)`
 `
 
 const NavBar = ({ navData, toggle }) => {
-  const [y, setY] = useState(window.scrollY)
-  const [showNav, setShowNav] = useState(true)
-
-  const handleNavigation = useCallback(
-    (e) => {
-      const window = e.currentTarget
-      if (y > window.scrollY) {
-        //scroll up
-        setShowNav(true)
-      } else if (y < window.scrollY) {
-        //scroll down
-        setShowNav(false)
-      }
-      setY(window.scrollY)
-    },
-    [y]
-  )
-
-  useEffect(() => {
-    setY(window.scrollY)
-    window.addEventListener('scroll', handleNavigation)
-
-    return () => {
-      window.removeEventListener('scroll', handleNavigation)
-    }
-  }, [handleNavigation])
-
-  // const toggleHome = () => {
-  //   scroll.scrollToTop()
-  // }
-
   return (
-    <Nav showNav={showNav}>
+    <Nav>
       <Bar>
         <Phone>
           <MdPhone />
