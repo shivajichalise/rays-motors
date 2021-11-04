@@ -3,7 +3,12 @@ const vehicles = [
     name: 'ISUZU Hi-Lander',
     slug: 'hilander',
     slogan: 'Unbelievable Versatality',
-    image: '../images/banner/hilander.jpg',
+    description:
+      "The all-new Hi-Lander has the power you need to get ahead. Whether it's work or leisure, all-new Hi-Lander promises to make both better. This is ultra-capable pickup knows its way around tough workdays and adventure-filled weekends too.",
+    image: {
+      banner: '../images/cars/banners/hilander.jpg',
+      portrait: '../images/cars/portraits/hilander.jpg',
+    },
     specifications: {
       engine: {
         type: '4 Cylinder, Common Rail, VGS Turbo Intercooled Diesel',
@@ -97,7 +102,12 @@ const vehicles = [
     name: 'ISUZU V-Cross',
     slug: 'vcross',
     slogan: 'Born All Mighty',
-    image: '../images/banner/vcross.jpg',
+    description:
+      'With its intuitive design and ergonomic styling, the new V-Cross makes every work week glide by smoothly. Now get the freedom you need and the luxury you desire in every journey no matter where you go.',
+    image: {
+      banner: '../images/cars/banners/vcross.jpg',
+      portrait: '../images/cars/portraits/hilander.jpg',
+    },
     specifications: {
       engine: {
         type: '4 Cylinder, Common Rail, VGS Turbo Intercooled Diesel',
@@ -191,7 +201,12 @@ const vehicles = [
     name: 'ISUZU S-Cab',
     slug: 'scab',
     slogan: 'Success is a Long Journey. Start Here.',
-    image: '../images/banner/scab.jpg',
+    description:
+      'Purposeful design, a spacious passenger cabin, a large and strong cargo deck. Every feature on the S-CAB has been carefully considered to maximise utility and enhance efficiency so that you can maximise your success.',
+    image: {
+      banner: '../images/cars/banners/scab.jpg',
+      portrait: '../images/cars/portraits/scab.jpg',
+    },
     specifications: {
       engine: {
         type: '4 Cylinder, Common Rail, Turbo Intercooled Diesel',

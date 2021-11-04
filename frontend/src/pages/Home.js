@@ -6,7 +6,6 @@ import { navData } from '../data/navData'
 import SideBar from '../components/SideBar'
 import Slider from '../components/Slider'
 import SplitBanner from '../components/SplitBanner'
-import { sliderDataForHeroSection, sliderData } from '../data/sliderData'
 import GlobalStyle from '../styles/globalStyles'
 import Footer from '../components/Footer'
 import Menu from '../components/Menu'
@@ -22,9 +21,9 @@ const Home = () => {
       <GlobalStyle />
       <SideBar isOpen={isOpen} toggle={toggle} />
       <NavBar navData={navData} toggle={toggle} />
-      <HeroSection slides={sliderDataForHeroSection} />
+      <HeroSection />
       <AboutUs />
-      <Slider slides={sliderData} />
+      <Slider />
       <SplitBanner />
       <Menu />
       <Footer />

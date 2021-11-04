@@ -20,13 +20,24 @@ const vehicleSchema = mongoose.Schema(
 
     slogan: {
       type: String,
+      required: true,
     },
 
-    image: {
+    description: {
       type: String,
       required: true,
     },
 
+    image: {
+      banner: {
+        type: String,
+        required: true,
+      },
+      portrait: {
+        type: String,
+        required: true,
+      },
+    },
     specifications: {
       engine: {
         type: {

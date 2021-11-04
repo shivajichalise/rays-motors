@@ -9,6 +9,7 @@ import styled from 'styled-components'
 import { isuzuTheme } from '../styles/theme'
 import { ButtonLink } from '../components/Button'
 import axios from 'axios'
+import Loader from '../components/Loader'
 
 const VehicleListContainer = styled.div`
   // background: #f00;
@@ -77,12 +78,14 @@ const Image = styled.img`
 `
 
 const VehiclesList = () => {
+  const [isLoading, setIsLoading] = useState(true)
   const [vehicles, setVehicles] = useState([])
 
   useEffect(() => {
     const fetchVehicles = async () => {
-      const { data } = await axios.get('/api/vehicles')
-      setVehicles(data)
+      const response = await axios.get('/api/vehicles')
+      setVehicles(response.data)
+      setIsLoading(false)
     }
     fetchVehicles()
   }, [])
@@ -90,6 +93,7 @@ const VehiclesList = () => {
   return (
     <VehicleListContainer>
       <VehicleListWrapper>
+        <Loader isLoading={isLoading} />
         {vehicles.map((vehicle) => (
           <VehicleCard key={vehicle._id}>
             <CardLeft reverse={vehicle._id % 2 === 0 ? true : false}>
@@ -101,7 +105,7 @@ const VehiclesList = () => {
             </CardLeft>
             <CardRight reverse={vehicle._id % 2 === 0 ? true : false}>
               <ImageWrapper>
-                <Image src={vehicle.image} alt={vehicle.name} />
+                <Image src={vehicle.image.banner} alt={vehicle.name} />
               </ImageWrapper>
             </CardRight>
           </VehicleCard>

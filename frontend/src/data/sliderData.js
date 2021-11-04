@@ -1,12 +1,12 @@
-import ImageOne from '../images/cars/d-max.jpg'
-import ImageTwo from '../images/cars/mu-x.jpg'
-import ImageThree from '../images/cars/s-cab.jpg'
+import ImageOne from '../images/cars/portraits/dmax.jpg'
+import ImageTwo from '../images/cars/portraits/mux.jpg'
+import ImageThree from '../images/cars/portraits/scab.jpg'
 
-import DMAXBanner from '../images/banners/d-max.jpg'
-import MUXBanner from '../images/banners/mu-x.jpg'
-import SCabBanner from '../images/banners/s-cab.jpg'
-import VCrossBanner from '../images/banners/v-cross.jpg'
-import HiLanderBanner from '../images/banners/hi-lander.jpg'
+import DMAXBanner from '../images/cars/banners/dmax.jpg'
+import MUXBanner from '../images/cars/banners/mux.jpg'
+import SCabBanner from '../images/cars/banners/scab.jpg'
+import VCrossBanner from '../images/cars/banners/vcross.jpg'
+import HiLanderBanner from '../images/cars/banners/hilander.jpg'
 
 export const sliderDataForHeroSection = [
   {

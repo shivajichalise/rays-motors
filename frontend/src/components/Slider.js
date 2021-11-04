@@ -4,6 +4,7 @@ import styled, { css } from 'styled-components/macro'
 import { MdArrowRight, MdArrowLeft } from 'react-icons/md'
 import { motion } from 'framer-motion'
 import { isuzuTheme } from '../styles/theme'
+import axios from 'axios'
 
 const SliderContainer = styled.div`
   height: 100vh;
@@ -151,29 +152,37 @@ const NextArrow = styled(MdArrowRight)`
   ${arrowButtons}
 `
 
-const Slider = ({ slides }) => {
+const Slider = () => {
   const [current, setCurrent] = useState(0)
-  const length = slides.length
+  const [vehicles, setVehicles] = useState([])
+  const length = vehicles.length
   const timeout = useRef(null)
 
   useEffect(() => {
-    const nextSlide = () => {
-      setCurrent((current) => (current === length - 1 ? 0 : current + 1))
+    const fetchVehicles = async () => {
+      const { data } = await axios.get('/api/vehicles')
+      setVehicles(data)
     }
+    fetchVehicles()
+  }, [])
 
-    timeout.current = setTimeout(nextSlide, 5000)
-    return function () {
-      if (timeout.current) {
-        clearTimeout(timeout.current)
-      }
-    }
-  }, [current, length])
+  // useEffect(() => {
+  //   const nextSlide = () => {
+  //     setCurrent((current) => (current === length - 1 ? 0 : current + 1))
+  //   }
+
+  //   timeout.current = setTimeout(nextSlide, 5000)
+  //   return function () {
+  //     if (timeout.current) {
+  //       clearTimeout(timeout.current)
+  //     }
+  //   }
+  // }, [current, length])
 
   const nextSlide = () => {
     if (timeout.current) {
       clearTimeout(timeout.current)
     }
-
     setCurrent(current === length - 1 ? 0 : current + 1)
   }
 
@@ -185,7 +194,7 @@ const Slider = ({ slides }) => {
     setCurrent(current === 0 ? length - 1 : current - 1)
   }
 
-  if (!Array.isArray(slides) || slides.length <= 0) {
+  if (!Array.isArray(vehicles) || vehicles.length <= 0) {
     return null
   }
 
@@ -199,7 +208,7 @@ const Slider = ({ slides }) => {
       <SliderWrapper>
         <PrevArrow onClick={prevSlide} />
         <SliderContent>
-          {slides.map((item, index) => {
+          {vehicles.map((vehicle, index) => {
             return (
               <Fragment key={index}>
                 {index === current && (
@@ -209,9 +218,9 @@ const Slider = ({ slides }) => {
                       animate={{ opacity: 1 }}
                       transition={{ duration: 1 }}
                     >
-                      <h1>{item.title}</h1>
-                      <p>{item.desc}</p>
-                      <p className="part2">{item.price}</p>
+                      <h1>{vehicle.name}</h1>
+                      <p>{vehicle.description}</p>
+                      {/* <p className="part2">{item.price}</p> */}
                     </ImageContent>
                     <ImageWrapper
                       variants={fadeLeft}
@@ -219,7 +228,7 @@ const Slider = ({ slides }) => {
                       animate="visible"
                       transition={{ duration: 1 }}
                     >
-                      <Image src={item.imgSrc} alt={item.alt} />
+                      <Image src={vehicle.image.portrait} alt={vehicle.name} />
                     </ImageWrapper>
                   </>
                 )}

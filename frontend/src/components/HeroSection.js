@@ -1,9 +1,10 @@
-import React, { useState, useRef } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import styled, { css } from 'styled-components/macro'
 // import { Button } from './Button'
 // import { IoMdArrowRoundForward } from 'react-icons/io'
 import { MdArrowRight, MdArrowLeft } from 'react-icons/md'
 import { isuzuTheme } from '../styles/theme'
+import axios from 'axios'
 
 const HeroSection = styled.section`
   height: 100vh;
@@ -127,10 +128,19 @@ const PrevArrow = styled(MdArrowLeft)`
 const NextArrow = styled(MdArrowRight)`
   ${arrowButtons}
 `
-const Hero = ({ slides }) => {
+const Hero = () => {
   const [current, setCurrent] = useState(0)
-  const length = slides.length
+  const [vehicles, setVehicles] = useState([])
+  const length = vehicles.length
   const timeout = useRef(null)
+
+  useEffect(() => {
+    const fetchVehicles = async () => {
+      const { data } = await axios.get('/api/vehicles')
+      setVehicles(data)
+    }
+    fetchVehicles()
+  }, [])
 
   // useEffect(() => {
   //   const nextSlide = () => {
@@ -161,19 +171,19 @@ const Hero = ({ slides }) => {
     setCurrent(current === 0 ? length - 1 : current - 1)
   }
 
-  if (!Array.isArray(slides) || slides.length <= 0) {
+  if (!Array.isArray(vehicles) || vehicles.length <= 0) {
     return null
   }
 
   return (
     <HeroSection>
       <HeroWrapper>
-        {slides.map((slide, index) => {
+        {vehicles.map((vehicle, index) => {
           return (
             <HeroSlide key={index}>
               {index === current && (
                 <HeroSlider>
-                  <HeroImage src={slide.imgSrc} alt={slide.alt} />
+                  <HeroImage src={vehicle.image.banner} alt={vehicle.name} />
                   {/* <HeroContent> */}
                   {/*   <h1>{slide.title}</h1> */}
                   {/* </HeroContent> */}
