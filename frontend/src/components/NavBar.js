@@ -7,7 +7,7 @@ import { FaBars as Hamburger } from 'react-icons/fa'
 import { MdLocationOn, MdPhone } from 'react-icons/md'
 // import { animateScroll as scroll } from 'react-scroll'
 import { isuzuTheme } from '../styles/theme'
-import '../fonts/usuziv2.ttf'
+import '../styles/addFont.css'
 
 const Nav = styled.nav`
   width: 100%;
