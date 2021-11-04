@@ -114,21 +114,33 @@ const vehicleSchema = mongoose.Schema(
               type: Number,
               required: true,
             },
-            unit: 'mm',
+            unit: {
+              type: String,
+              required: true,
+              default: 'mm',
+            },
           },
           breadth: {
             value: {
               type: Number,
               required: true,
             },
-            unit: 'mm',
+            unit: {
+              type: String,
+              required: true,
+              default: 'mm',
+            },
           },
           height: {
             value: {
               type: Number,
               required: true,
             },
-            unit: 'mm',
+            unit: {
+              type: String,
+              required: true,
+              default: 'mm',
+            },
           },
         },
         wheelbase: {
@@ -136,7 +148,11 @@ const vehicleSchema = mongoose.Schema(
             type: Number,
             required: true,
           },
-          unit: 'mm',
+          unit: {
+            type: String,
+            required: true,
+            default: 'mm',
+          },
         },
         deckInner: {
           length: {
@@ -144,21 +160,33 @@ const vehicleSchema = mongoose.Schema(
               type: Number,
               required: true,
             },
-            unit: 'mm',
+            unit: {
+              type: String,
+              required: true,
+              default: 'mm',
+            },
           },
           breadth: {
             value: {
               type: Number,
               required: true,
             },
-            unit: 'mm',
+            unit: {
+              type: String,
+              required: true,
+              default: 'mm',
+            },
           },
           height: {
             value: {
               type: Number,
               required: true,
             },
-            unit: 'mm',
+            unit: {
+              type: String,
+              required: true,
+              default: 'mm',
+            },
           },
         },
         turningCircleRadius: {
@@ -166,14 +194,22 @@ const vehicleSchema = mongoose.Schema(
             type: Number,
             required: true,
           },
-          unit: 'm',
+          unit: {
+            type: String,
+            required: true,
+            default: 'm',
+          },
         },
         groundClearance: {
           value: {
             type: Number,
             required: true,
           },
-          unit: 'mm',
+          unit: {
+            type: String,
+            required: true,
+            default: 'mm',
+          },
         },
       },
       capacity: {
@@ -182,14 +218,22 @@ const vehicleSchema = mongoose.Schema(
             type: Number,
             required: true,
           },
-          unit: 'kg',
+          unit: {
+            type: String,
+            required: true,
+            default: 'kg',
+          },
         },
         kerbWeight: {
           value: {
             type: Number,
             required: true,
           },
-          unit: 'kg',
+          unit: {
+            type: String,
+            required: true,
+            default: 'kg',
+          },
         },
         totalSeatingCapacity: {
           type: Number,
@@ -200,7 +244,11 @@ const vehicleSchema = mongoose.Schema(
             type: Number,
             required: true,
           },
-          unit: 'L',
+          unit: {
+            type: String,
+            required: true,
+            default: 'L',
+          },
         },
       },
     },
