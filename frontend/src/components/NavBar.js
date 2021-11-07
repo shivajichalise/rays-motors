@@ -7,7 +7,6 @@ import { FaBars as Hamburger } from 'react-icons/fa'
 import { MdLocationOn, MdPhone } from 'react-icons/md'
 // import { animateScroll as scroll } from 'react-scroll'
 import { isuzuTheme } from '../styles/theme'
-import '../styles/addFont.css'
 
 const Nav = styled.nav`
   width: 100%;
@@ -249,7 +248,9 @@ const NavBar = ({ navData, toggle }) => {
       <NavbarContainer>
         {/* <NavLogo to="/">Rays</NavLogo> */}
         <NavImgLogo>
-          <LogoText to="/">RAYS MOTORS</LogoText>
+          <LogoText className="useIsuzuFont" to="/">
+            RAYS MOTORS
+          </LogoText>
           {/* <LogoImg */}
           {/*   src={Logo} */}
           {/*   alt="Rays Motors Logo" */}

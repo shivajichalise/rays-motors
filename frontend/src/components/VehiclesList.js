@@ -1,5 +1,7 @@
-import React, { useState, useEffect } from 'react'
+import React, { useEffect } from 'react'
 import styled from 'styled-components'
+import { useDispatch, useSelector } from 'react-redux'
+import { listVehicles } from '../actions/vehicleActions'
 // import Dmax from '../images/banners/d-max.jpg'
 // import Mux from '../images/banners/mu-x.jpg'
 // import Vcross from '../images/banners/v-cross.jpg'
@@ -8,7 +10,6 @@ import styled from 'styled-components'
 // import SingleCab from '../images/banners/single-cab.jpg'
 import { isuzuTheme } from '../styles/theme'
 import { ButtonLink } from '../components/Button'
-import axios from 'axios'
 import Loader from '../components/Loader'
 
 const VehicleListContainer = styled.div`
@@ -78,110 +79,48 @@ const Image = styled.img`
 `
 
 const VehiclesList = () => {
-  const [isLoading, setIsLoading] = useState(true)
-  const [vehicles, setVehicles] = useState([])
+  const dispatch = useDispatch()
+  const vehicleList = useSelector((state) => state.vehicleList)
+  const { loading, error, vehicles } = vehicleList
 
   useEffect(() => {
-    const fetchVehicles = async () => {
-      const response = await axios.get('/api/vehicles')
-      setVehicles(response.data)
-      setIsLoading(false)
-    }
-    fetchVehicles()
-  }, [])
+    dispatch(listVehicles())
+  }, [dispatch])
 
   return (
     <VehicleListContainer>
-      <VehicleListWrapper>
-        <Loader isLoading={isLoading} />
-        {vehicles.map((vehicle) => (
-          <VehicleCard key={vehicle._id}>
-            <CardLeft reverse={vehicle._id % 2 === 0 ? true : false}>
-              <h1>{vehicle.name}</h1>
-              <p>{vehicle.slogan}</p>
-              <ButtonLink primary="primary" to={`/vehicles/${vehicle.slug}`}>
-                Know More
-              </ButtonLink>
-            </CardLeft>
-            <CardRight reverse={vehicle._id % 2 === 0 ? true : false}>
-              <ImageWrapper>
-                <Image src={vehicle.image.banner} alt={vehicle.name} />
-              </ImageWrapper>
-            </CardRight>
-          </VehicleCard>
-        ))}
-
-        {/* <VehicleCard> */}
-        {/*   <CardLeft reverse={0}> */}
-        {/*     <h1>Isuzu MU-X</h1> */}
-        {/*     <p>Take The Lead</p> */}
-        {/*     <ButtonLink primary="primary" to="/vehicles/mux"> */}
-        {/*       Know More */}
-        {/*     </ButtonLink> */}
-        {/*   </CardLeft> */}
-        {/*   <CardRight reverse={0}> */}
-        {/*     <ImageWrapper> */}
-        {/*       <Image src={Mux} alt="Isuzu MU-X" /> */}
-        {/*     </ImageWrapper> */}
-        {/*   </CardRight> */}
-        {/* </VehicleCard> */}
-        {/* <VehicleCard> */}
-        {/*   <CardLeft reverse={1}> */}
-        {/*     <h1>Isuzu S-CAB</h1> */}
-        {/*     <p>Success is a Long Journey. Start Here</p> */}
-        {/*     <ButtonLink primary="primary" to="/vehicles/scab"> */}
-        {/*       Know More */}
-        {/*     </ButtonLink> */}
-        {/*   </CardLeft> */}
-        {/*   <CardRight reverse={1}> */}
-        {/*     <ImageWrapper> */}
-        {/*       <Image src={Scab} alt="Isuzu D-Max" /> */}
-        {/*     </ImageWrapper> */}
-        {/*   </CardRight> */}
-        {/* </VehicleCard> */}
-        {/* <VehicleCard> */}
-        {/*   <CardLeft reverse={false}> */}
-        {/*     <h1>Isuzu Single Cab</h1> */}
-        {/*     <p>Super Strong Performance, Super Strong Results</p> */}
-        {/*     <ButtonLink primary="primary" to="/vehicles/singlecab"> */}
-        {/*       Know More */}
-        {/*     </ButtonLink> */}
-        {/*   </CardLeft> */}
-        {/*   <CardRight reverse={false}> */}
-        {/*     <ImageWrapper> */}
-        {/*       <Image src={SingleCab} alt="Isuzu Single Cab" /> */}
-        {/*     </ImageWrapper> */}
-        {/*   </CardRight> */}
-        {/* </VehicleCard> */}
-        {/* <VehicleCard> */}
-        {/*   <CardLeft reverse={true}> */}
-        {/*     <h1>Isuzu V-Cross</h1> */}
-        {/*     <p>Born All Mighty</p> */}
-        {/*     <ButtonLink primary="primary" to="/vehicles/vcross"> */}
-        {/*       Know More */}
-        {/*     </ButtonLink> */}
-        {/*   </CardLeft> */}
-        {/*   <CardRight reverse={true}> */}
-        {/*     <ImageWrapper> */}
-        {/*       <Image src={Vcross} alt="Isuzu D-Max" /> */}
-        {/*     </ImageWrapper> */}
-        {/*   </CardRight> */}
-        {/* </VehicleCard> */}
-        {/* <VehicleCard> */}
-        {/*   <CardLeft reverse={false}> */}
-        {/*     <h1>Isuzu Hi-Lander</h1> */}
-        {/*     <p>Unbelievable Versatility</p> */}
-        {/*     <ButtonLink primary="primary" to="/vehicles/hilander"> */}
-        {/*       Know More */}
-        {/*     </ButtonLink> */}
-        {/*   </CardLeft> */}
-        {/*   <CardRight reverse={false}> */}
-        {/*     <ImageWrapper> */}
-        {/*       <Image src={Hilander} alt="Isuzu D-Max" /> */}
-        {/*     </ImageWrapper> */}
-        {/*   </CardRight> */}
-        {/* </VehicleCard> */}
-      </VehicleListWrapper>
+      {loading ? (
+        <Loader isLoading={loading} />
+      ) : error ? (
+        <h3>{error}</h3>
+      ) : (
+        <VehicleListWrapper>
+          {vehicles.map((vehicle) => (
+            <VehicleCard key={vehicle._id}>
+              <CardLeft
+                reverse={
+                  vehicle._id[vehicle._id.length - 1] % 2 === 0 ? true : false
+                }
+              >
+                <h1>{vehicle.name}</h1>
+                <p>{vehicle.slogan}</p>
+                <ButtonLink primary="primary" to={`/vehicles/${vehicle._id}`}>
+                  Know More
+                </ButtonLink>
+              </CardLeft>
+              <CardRight
+                reverse={
+                  vehicle._id[vehicle._id.length - 1] % 2 === 0 ? true : false
+                }
+              >
+                <ImageWrapper>
+                  <Image src={vehicle.image.banner} alt={vehicle.name} />
+                </ImageWrapper>
+              </CardRight>
+            </VehicleCard>
+          ))}
+        </VehicleListWrapper>
+      )}
     </VehicleListContainer>
   )
 }

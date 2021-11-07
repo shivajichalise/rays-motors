@@ -2,11 +2,9 @@ import React from 'react'
 import styled, { css } from 'styled-components/macro'
 import { Link as LinkS } from 'react-scroll'
 import { Link as LinkR } from 'react-router-dom'
-// import Logo from '../images/Hiluxplain.svg'
 import { FaBars as Hamburger } from 'react-icons/fa'
 import { MdLocationOn, MdPhone } from 'react-icons/md'
 import { isuzuTheme } from '../styles/theme'
-import '../fonts/usuziv2.ttf'
 
 const Nav = styled.nav`
   background: ${isuzuTheme.white};
@@ -140,7 +138,6 @@ const NavLink = css`
 
 const LogoText = styled(LinkR)`
   ${NavLink}
-  font-family: Usuzi;
   font-size: 1.2rem;
 `
 
@@ -214,7 +211,9 @@ const NavBar = ({ navData, toggle }) => {
       <NavbarContainer>
         {/* <NavLogo to="/">Rays</NavLogo> */}
         <NavImgLogo>
-          <LogoText to="/">RAYS MOTORS</LogoText>
+          <LogoText className="useIsuzuFont" to="/">
+            RAYS MOTORS
+          </LogoText>
           {/* <LogoImg */}
           {/*   src={Logo} */}
           {/*   alt="Rays Motors Logo" */}

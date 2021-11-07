@@ -1,5 +1,5 @@
 import { createGlobalStyle } from 'styled-components'
-
+import './addFont.css'
 const GlobalStyle = createGlobalStyle`
   *{
     margin: 0;
@@ -10,6 +10,10 @@ const GlobalStyle = createGlobalStyle`
 
   html, body {
     overflow-x: hidden;
+  }
+
+  .useIsuzuFont {
+    font-family: Usuzi;
   }
 
 `

@@ -106,7 +106,7 @@ const vehicles = [
       'With its intuitive design and ergonomic styling, the new V-Cross makes every work week glide by smoothly. Now get the freedom you need and the luxury you desire in every journey no matter where you go.',
     image: {
       banner: '../images/cars/banners/vcross.jpg',
-      portrait: '../images/cars/portraits/hilander.jpg',
+      portrait: '../images/cars/portraits/vcross.jpg',
     },
     specifications: {
       engine: {
