@@ -97,6 +97,78 @@ const vehicles = [
         },
       },
     },
+    comfortAndConvinience: [
+      'Twin-Cockpit Ergonomic Cabin Design',
+
+      'Central locking with key',
+
+      'Front Wrap-around Bucket Seat',
+
+      '6-way Manually Adjustable Driver seat',
+
+      'Adjustable Headrests',
+
+      'High Quality Fabric Upholstery',
+
+      'AC with Pollen filters',
+
+      '4 speakers with pre-wiring (Front door & dash)',
+
+      '3D Electro-luminescent Meters with Multi-information Display (MID)',
+
+      'Flexible Rear Seat - Foldable with 60:40 Tip-Up',
+
+      'Multiple Cup Holders and Storage Compartments',
+
+      'Multiple Power Outlets',
+
+      'Auto down power windows',
+
+      'Gear Shift Indicator',
+
+      'Vanity Mirror on Passenger sun visor',
+
+      'Coat Hooks',
+
+      'Overhead Dome lamp',
+
+      'DPD & SCR Level Indicators',
+    ],
+    safetyAndSecurity: [
+      'Anti-skid Brake System (ABS) with Electronic Brakeforce Distribution (EBD)',
+
+      'Emergency Brake Assist (EBA) Brake Override System (BOS),,',
+
+      'Dual Front Airbags,',
+
+      'Pre-Tensioners with Load Limiters for Front Seat Belts,',
+
+      'ISOFIX Anchorages for child Seat,',
+
+      'Rear Door Child Lock,',
+
+      'Engine Immobiliser,',
+
+      'Pedestrian Friendly Front Fascia,',
+
+      'High Tensile Steel Body with Tailor-Welded Blanks,',
+
+      'Side Anti-intrusion Bars,',
+
+      'Chassis and Cabin with Crumple Zones,',
+
+      'Collapsible Steering Column,',
+
+      'Driver & Passenger Seat Belt Warning,',
+
+      'Engine Cover,',
+
+      'Wheel Cover,',
+
+      'Steel Underbody Protection',
+
+      'Warning Lamps and Buzzers',
+    ],
   },
   {
     name: 'ISUZU V-Cross',
@@ -196,6 +268,78 @@ const vehicles = [
         },
       },
     },
+    comfortAndConvinience: [
+      'Twin-Cockpit Ergonomic Cabin Design',
+
+      'Central locking with key',
+
+      'Front Wrap-around Bucket Seat',
+
+      '6-way Manually Adjustable Driver seat',
+
+      'Adjustable Headrests',
+
+      'High Quality Fabric Upholstery',
+
+      'AC with Pollen filters',
+
+      '4 speakers with pre-wiring (Front door & dash)',
+
+      '3D Electro-luminescent Meters with Multi-information Display (MID)',
+
+      'Flexible Rear Seat - Foldable with 60:40 Tip-Up',
+
+      'Multiple Cup Holders and Storage Compartments',
+
+      'Multiple Power Outlets',
+
+      'Auto down power windows',
+
+      'Gear Shift Indicator',
+
+      'Vanity Mirror on Passenger sun visor',
+
+      'Coat Hooks',
+
+      'Overhead Dome lamp',
+
+      'DPD & SCR Level Indicators',
+    ],
+    safetyAndSecurity: [
+      'Anti-skid Brake System (ABS) with Electronic Brakeforce Distribution (EBD)',
+
+      'Emergency Brake Assist (EBA) Brake Override System (BOS),,',
+
+      'Dual Front Airbags,',
+
+      'Pre-Tensioners with Load Limiters for Front Seat Belts,',
+
+      'ISOFIX Anchorages for child Seat,',
+
+      'Rear Door Child Lock,',
+
+      'Engine Immobiliser,',
+
+      'Pedestrian Friendly Front Fascia,',
+
+      'High Tensile Steel Body with Tailor-Welded Blanks,',
+
+      'Side Anti-intrusion Bars,',
+
+      'Chassis and Cabin with Crumple Zones,',
+
+      'Collapsible Steering Column,',
+
+      'Driver & Passenger Seat Belt Warning,',
+
+      'Engine Cover,',
+
+      'Wheel Cover,',
+
+      'Steel Underbody Protection',
+
+      'Warning Lamps and Buzzers',
+    ],
   },
   {
     name: 'ISUZU S-Cab',
@@ -295,6 +439,78 @@ const vehicles = [
         },
       },
     },
+    comfortAndConvinience: [
+      'Twin-Cockpit Ergonomic Cabin Design',
+
+      'Central locking with key',
+
+      'Front Wrap-around Bucket Seat',
+
+      '6-way Manually Adjustable Driver seat',
+
+      'Adjustable Headrests',
+
+      'High Quality Fabric Upholstery',
+
+      'AC with Pollen filters',
+
+      '4 speakers with pre-wiring (Front door & dash)',
+
+      '3D Electro-luminescent Meters with Multi-information Display (MID)',
+
+      'Flexible Rear Seat - Foldable with 60:40 Tip-Up',
+
+      'Multiple Cup Holders and Storage Compartments',
+
+      'Multiple Power Outlets',
+
+      'Auto down power windows',
+
+      'Gear Shift Indicator',
+
+      'Vanity Mirror on Passenger sun visor',
+
+      'Coat Hooks',
+
+      'Overhead Dome lamp',
+
+      'DPD & SCR Level Indicators',
+    ],
+    safetyAndSecurity: [
+      'Anti-skid Brake System (ABS) with Electronic Brakeforce Distribution (EBD)',
+
+      'Emergency Brake Assist (EBA) Brake Override System (BOS)',
+
+      'Dual Front Airbags',
+
+      'Pre-Tensioners with Load Limiters for Front Seat Belts',
+
+      'ISOFIX Anchorages for child Seat',
+
+      'Rear Door Child Lock',
+
+      'Engine Immobiliser',
+
+      'Pedestrian Friendly Front Fascia',
+
+      'High Tensile Steel Body with Tailor-Welded Blanks',
+
+      'Side Anti-intrusion Bars',
+
+      'Chassis and Cabin with Crumple Zones',
+
+      'Collapsible Steering Column',
+
+      'Driver & Passenger Seat Belt Warning',
+
+      'Engine Cover',
+
+      'Wheel Cover',
+
+      'Steel Underbody Protection',
+
+      'Warning Lamps and Buzzers',
+    ],
   },
 ]
 

@@ -1,13 +1,13 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { listVehicleDetails } from '../actions/vehicleActions'
 import styled, { css } from 'styled-components/macro'
 import { MdRequestQuote } from 'react-icons/md'
 import { RiBookletFill } from 'react-icons/ri'
 import { isuzuTheme } from '../styles/theme'
 import { Link } from 'react-router-dom'
+import Table from './Table'
 import Loader from './Loader'
-import { vehicle } from '../data/vehicle'
+import { listVehicleDetails } from '../actions/vehicleActions'
 
 const VehicleContainer = styled.div`
   background: ${isuzuTheme.grey};
@@ -126,49 +126,23 @@ const Brochure = styled(RiBookletFill)`
   ${OptionCss}
 `
 
-const TableWrapper = styled.div``
+const Vehicle = ({ id }) => {
+  const dispatch = useDispatch()
 
-const Vehicle = ({ match }) => {
-  // const { loading, error } = vehicleDetails
+  const vehicleDetails = useSelector((state) => state.vehicleDetails)
+  const { loading, error, vehicle } = vehicleDetails
 
-  // useEffect(() => {
-  //   dispatch(listVehicleDetails(match.params.id))
-  // }, [dispatch, match])
-  const loading = false
-  const error = false
-  let prop
-  let headTitle = []
-  let title = []
-  let subTitle = []
-  vehicle.specifications.forEach((item) => {
-    iterateVehicle(item)
-  })
+  useEffect(() => {
+    dispatch(listVehicleDetails(id))
+  }, [dispatch, id])
 
-  function iterateVehicle(vehicle) {
-    for (prop in vehicle) {
-      if (typeof vehicle[prop] === 'object') {
-        headTitle.push(prop)
-        iterateVehicle(vehicle[prop])
-      } else {
-        title.push(prop)
-        subTitle.push(vehicle[prop])
-
-        // console.log(`   ${prop}`)
-        // console.log(`        ${vehicle[prop]}`)
-      }
-    }
-  }
-
-  console.log(headTitle)
-  // console.log(title)
-  // console.log(subTitle)
   return (
     <VehicleContainer>
       {loading ? (
         <Loader isLoading={loading} />
       ) : error ? (
-        <h3>{error}</h3>
-      ) : (
+        <h1>{error}</h1>
+      ) : Object.keys(vehicle).length > 0 ? (
         <VehicleWrapper>
           <ImageWrapper>
             <Image src={vehicle.image.banner} alt={vehicle.name} />
@@ -198,44 +172,11 @@ const Vehicle = ({ match }) => {
               </MenuOption>
             </MenuWrapper>
           </MenuContainer>
-          <TableWrapper>
-            <table border={1}>
-              <thead>
-                <tr>
-                  <th>SPECIFICATIONS</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>dsasdad</td>
-                  <td>
-                    <ul>
-                      <li>dsasdad</li>
-                      <li>dsasdad</li>
-                      <li>dsasdad</li>
-                      <li>dsasdad</li>
-                    </ul>
-                  </td>
-                </tr>
-                <tr>
-                  <td>dsasdad</td>
-                  <td>
-                    <ul>
-                      <li>dsasdad</li>
-                      <li>dsasdad</li>
-                    </ul>
-                  </td>
-                  <td>
-                    <ul>
-                      <li>dsasdad</li>
-                      <li>dsasdad</li>
-                    </ul>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </TableWrapper>
+          <h2 color={isuzuTheme.text}>Specifications</h2>
+          <Table v={vehicle} />
         </VehicleWrapper>
+      ) : (
+        <p>error</p>
       )}
     </VehicleContainer>
   )

@@ -263,6 +263,14 @@ const vehicleSchema = mongoose.Schema(
         },
       },
     },
+    comfortAndConvinience: {
+      type: [String],
+      required: false,
+    },
+    safetyAndSecurity: {
+      type: [String],
+      required: false,
+    },
   },
   {
     timestamps: true,

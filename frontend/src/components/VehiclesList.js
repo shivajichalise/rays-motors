@@ -9,7 +9,7 @@ import { listVehicles } from '../actions/vehicleActions'
 // import Hilander from '../images/banners/hi-lander.jpg'
 // import SingleCab from '../images/banners/single-cab.jpg'
 import { isuzuTheme } from '../styles/theme'
-import { ButtonLink } from '../components/Button'
+import { ButtonLink, ButtonAnchor } from '../components/Button'
 import Loader from '../components/Loader'
 
 const VehicleListContainer = styled.div`
@@ -67,6 +67,12 @@ const CardRight = styled.div`
   }
 `
 
+const ButtonSection = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+`
+
 const ImageWrapper = styled.div`
   width: 100%;
   height: 100%;
@@ -95,30 +101,36 @@ const VehiclesList = () => {
         <h3>{error}</h3>
       ) : (
         <VehicleListWrapper>
-          {vehicles.map((vehicle) => (
-            <VehicleCard key={vehicle._id}>
-              <CardLeft
-                reverse={
-                  vehicle._id[vehicle._id.length - 1] % 2 === 0 ? true : false
-                }
-              >
-                <h1>{vehicle.name}</h1>
-                <p>{vehicle.slogan}</p>
-                <ButtonLink primary="primary" to={`/vehicles/${vehicle._id}`}>
-                  Know More
-                </ButtonLink>
-              </CardLeft>
-              <CardRight
-                reverse={
-                  vehicle._id[vehicle._id.length - 1] % 2 === 0 ? true : false
-                }
-              >
-                <ImageWrapper>
-                  <Image src={vehicle.image.banner} alt={vehicle.name} />
-                </ImageWrapper>
-              </CardRight>
-            </VehicleCard>
-          ))}
+          {vehicles.map((vehicle, index) => {
+            return (
+              <VehicleCard key={vehicle._id}>
+                <CardLeft reverse={(index + 1) % 2 === 0 ? true : false}>
+                  <h1>{vehicle.name}</h1>
+                  <p>{vehicle.slogan}</p>
+                  <ButtonSection>
+                    <ButtonLink
+                      primary="primary"
+                      to={`/vehicles/${vehicle._id}`}
+                    >
+                      Know More
+                    </ButtonLink>
+                    <ButtonAnchor
+                      primary="primary"
+                      href={`/${vehicle.image.banner}`}
+                      target="__blank"
+                    >
+                      Download Brochure
+                    </ButtonAnchor>
+                  </ButtonSection>
+                </CardLeft>
+                <CardRight reverse={(index + 1) % 2 === 0 ? true : false}>
+                  <ImageWrapper>
+                    <Image src={vehicle.image.banner} alt={vehicle.name} />
+                  </ImageWrapper>
+                </CardRight>
+              </VehicleCard>
+            )
+          })}
         </VehicleListWrapper>
       )}
     </VehicleListContainer>

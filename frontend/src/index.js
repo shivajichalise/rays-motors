@@ -5,9 +5,11 @@ import store from './store'
 import App from './App'
 import reportWebVitals from './reportWebVitals'
 import './styles/addFont.css'
+import Arrow from './components/Arrow'
 
 ReactDOM.render(
   <Provider store={store}>
+    <Arrow />
     <App />
   </Provider>,
   document.getElementById('root')

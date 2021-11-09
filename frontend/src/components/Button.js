@@ -15,6 +15,7 @@ const style = css`
   display: flex;
   justify-content: center;
   align-item: center;
+  margin: 1rem;
   padding: ${({ big }) => (big ? '16px 40px' : '14px 24px')};
   color: ${({ primary }) => (primary ? isuzuTheme.white : '#000d1a')};
   font-size: ${({ big }) => (big ? '20px' : '14px')};

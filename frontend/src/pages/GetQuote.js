@@ -3,11 +3,11 @@ import NavBar from '../components/NavBarSecond'
 import { vehiclesNavData } from '../data/navData'
 import SideBar from '../components/SideBar'
 import GlobalStyle from '../styles/globalStyles'
-import Vehicle from '../components/Vehicle'
+import Brochure from '../components/Brochure'
 import Footer from '../components/Footer'
 import ScrollToTop from '../components/ScrollToTop'
 
-const SingleVehicle = ({ match }) => {
+const GetBrochure = () => {
   const [isOpen, setIsOpen] = useState(false)
   const toggle = () => {
     setIsOpen(!isOpen)
@@ -19,10 +19,10 @@ const SingleVehicle = ({ match }) => {
       <ScrollToTop />
       <SideBar isOpen={isOpen} toggle={toggle} />
       <NavBar navData={vehiclesNavData} toggle={toggle} />
-      <Vehicle id={match.params.id} />
+      <Brochure />
       <Footer />
     </>
   )
 }
 
-export default SingleVehicle
+export default GetBrochure

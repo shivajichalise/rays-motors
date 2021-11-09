@@ -4,6 +4,8 @@ export const isuzuTheme = {
   card: '#eeece6',
   red: '#FD0D1B',
   trueRed: '#ff0000',
+  lightRed: '#ff7f7f',
+  extraLightRed: '#ffcccb',
   text: '#262429',
   matteBlack: '#141414',
 }

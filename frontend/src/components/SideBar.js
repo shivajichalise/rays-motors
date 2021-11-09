@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import { FaTimes } from 'react-icons/fa'
 import { Link as LinkR } from 'react-router-dom'
 import { Link as LinkS } from 'react-scroll'
-import { navData } from '../data/navData'
+import { vehiclesNavData } from '../data/navData'
 
 const SidebarContainer = styled.aside`
   position: fixed;
@@ -98,7 +98,7 @@ const SideBar = ({ isOpen, toggle }) => {
       </Icon>
       <SidebarWrapper>
         <SidebarMenu>
-          {navData.map((item, index) => (
+          {vehiclesNavData.map((item, index) => (
             <SidebarLink
               key={index}
               to={item.link}
