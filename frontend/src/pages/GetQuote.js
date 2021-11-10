@@ -3,7 +3,7 @@ import NavBar from '../components/NavBarSecond'
 import { vehiclesNavData } from '../data/navData'
 import SideBar from '../components/SideBar'
 import GlobalStyle from '../styles/globalStyles'
-import Brochure from '../components/Brochure'
+import Quote from '../components/Quote'
 import Footer from '../components/Footer'
 import ScrollToTop from '../components/ScrollToTop'
 
@@ -19,7 +19,7 @@ const GetBrochure = () => {
       <ScrollToTop />
       <SideBar isOpen={isOpen} toggle={toggle} />
       <NavBar navData={vehiclesNavData} toggle={toggle} />
-      <Brochure />
+      <Quote />
       <Footer />
     </>
   )

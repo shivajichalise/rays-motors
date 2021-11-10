@@ -102,13 +102,13 @@ const Menu = () => {
             <p>All Vehicles</p>
           </OptionDiv>
           <OptionDiv>
-            <MenuLink to="/getquote">
+            <MenuLink to="/quote">
               <Quote />
             </MenuLink>
             <p>Get a Quote</p>
           </OptionDiv>
           <OptionDiv>
-            <MenuLink to="/brochure">
+            <MenuLink to="/vehicles">
               <Brochure />
             </MenuLink>
             <p>Get a Brochure</p>
