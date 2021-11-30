@@ -44,6 +44,10 @@ const MenuContent = styled.div`
   width: 90%;
 `
 
+const UserWrapper = styled.div`
+  display: flex;
+`
+
 const Anchor = styled(Link)``
 
 const Dropdown = styled.div`
@@ -102,23 +106,38 @@ const Header = () => {
         <Anchor to="/" className="leftAlign">
           Rays Motors
         </Anchor>
-        {userInfo ? (
-          <Dropdown>
-            <DropdownButton>
-              <FaUserCircle /> {userInfo.name}
-            </DropdownButton>
-            <DropdownContent>
-              <DropdownAnchor to="/profile">Profile</DropdownAnchor>
-              <DropdownAnchor to="#" onClick={logoutHandler}>
-                Logout
-              </DropdownAnchor>
-            </DropdownContent>
-          </Dropdown>
-        ) : (
-          <Anchor to="/login" className="rightAlign">
-            <FaUserCircle /> Sign In
-          </Anchor>
-        )}
+        <UserWrapper>
+          {userInfo ? (
+            <Dropdown>
+              <DropdownButton>
+                <FaUserCircle /> {userInfo.name}
+              </DropdownButton>
+              <DropdownContent>
+                <DropdownAnchor to="/profile">Profile</DropdownAnchor>
+                <DropdownAnchor to="#" onClick={logoutHandler}>
+                  Logout
+                </DropdownAnchor>
+              </DropdownContent>
+            </Dropdown>
+          ) : (
+            <Anchor to="/login" className="rightAlign">
+              <FaUserCircle /> Sign In
+            </Anchor>
+          )}
+          {userInfo && userInfo.isAdmin && (
+            <Dropdown>
+              <DropdownButton>
+                <FaUserCircle /> {`Admin`}
+              </DropdownButton>
+              <DropdownContent>
+                <DropdownAnchor to="/admin/userlist">Users</DropdownAnchor>
+                <DropdownAnchor to="/admin/vehiclelist">
+                  Vehicles
+                </DropdownAnchor>
+              </DropdownContent>
+            </Dropdown>
+          )}
+        </UserWrapper>
       </MenuContent>
     </Menu>
   )

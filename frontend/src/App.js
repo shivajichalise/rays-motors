@@ -6,6 +6,7 @@ import GetQuote from './pages/GetQuote'
 import LoginPage from './pages/LoginPage'
 import RegisterPage from './pages/RegisterPage'
 import ProfilePage from './pages/ProfilePage'
+import Users from './pages/Users'
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
         <Route path="/login" component={LoginPage} exact />
         <Route path="/register" component={RegisterPage} exact />
         <Route path="/profile" component={ProfilePage} exact />
+        <Route path="/admin/userlist" component={Users} exact />
       </Switch>
     </Router>
   )
