@@ -136,7 +136,7 @@ const UserList = ({ history }) => {
                       <TD>{user.email}</TD>
                       <TD>{user.isAdmin ? <Check /> : <Times />}</TD>
                       <TD>
-                        <Option to={`/user/${user._id}/edit`}>
+                        <Option to={`/admin/user/${user._id}/edit`}>
                           <Edit />
                         </Option>
                         <Option
