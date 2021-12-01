@@ -8,6 +8,7 @@ import RegisterPage from './pages/RegisterPage'
 import ProfilePage from './pages/ProfilePage'
 import Users from './pages/Users'
 import User from './pages/User'
+import VehiclesAdmin from './pages/VehiclesAdmin'
 
 function App() {
   return (
@@ -21,6 +22,8 @@ function App() {
         <Route path="/register" component={RegisterPage} exact />
         <Route path="/profile" component={ProfilePage} exact />
         <Route path="/admin/userlist" component={Users} exact />
+        <Route path="/admin/user/:id/edit" component={User} exact />
+        <Route path="/admin/vehiclelist" component={VehiclesAdmin} exact />
         <Route path="/admin/user/:id/edit" component={User} exact />
       </Switch>
     </Router>
