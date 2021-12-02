@@ -4,6 +4,8 @@ import { composeWithDevTools } from 'redux-devtools-extension'
 import {
   vehicleListReducer,
   vehicleDetailsReducer,
+  vehicleDeleteReducer,
+  vehicleCreateReducer,
 } from './reducers/vehicleReducers'
 import {
   userLoginReducer,
@@ -18,6 +20,7 @@ import {
 const reducer = combineReducers({
   vehicleList: vehicleListReducer,
   vehicleDetails: vehicleDetailsReducer,
+  vehicleDelete: vehicleDeleteReducer,
   userLogin: userLoginReducer,
   userRegister: userRegisterReducer,
   userDetails: userDetailsReducer,
@@ -25,6 +28,7 @@ const reducer = combineReducers({
   userList: userListReducer,
   userDelete: userDeleteReducer,
   userUpdate: userUpdateReducer,
+  vehicleCreate: vehicleCreateReducer,
 })
 
 const userInfoFromStorage = localStorage.getItem('userInfo')

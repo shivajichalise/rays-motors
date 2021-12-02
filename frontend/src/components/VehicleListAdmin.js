@@ -6,7 +6,12 @@ import Message from './Message'
 import LoaderMin from './LoaderMin'
 import styled, { css } from 'styled-components/macro'
 import { isuzuTheme } from '../styles/theme'
-import { listVehicles } from '../actions/vehicleActions'
+import {
+  listVehicles,
+  deleteVehicle,
+  createVehicle,
+} from '../actions/vehicleActions'
+import { VEHICLE_CREATE_RESET } from '../constants/vehicleConstants'
 import { AiFillDelete } from 'react-icons/ai'
 import { RiEditBoxFill } from 'react-icons/ri'
 import { ButtonLink as Button } from '../components/Button'
@@ -82,26 +87,52 @@ const VehicleListAdmin = ({ history, match }) => {
   const vehicleList = useSelector((state) => state.vehicleList)
   const { loading, error, vehicles } = vehicleList
 
+  const vehicleDelete = useSelector((state) => state.vehicleDelete)
+  const {
+    loading: loadingDelete,
+    error: errorDelete,
+    success: successDelete,
+  } = vehicleDelete
+
+  const vehicleCreate = useSelector((state) => state.vehicleCreate)
+  const {
+    loading: loadingCreate,
+    error: errorCreate,
+    success: successCreate,
+    vehicle: createdVehicle,
+  } = vehicleCreate
+
   const userLogin = useSelector((state) => state.userLogin)
   const { userInfo } = userLogin
 
   const deleteHandler = (id) => {
     if (window.confirm('Are you sure that you want to delete the vehicle ?')) {
-      // Delete VEHICLE
+      dispatch(deleteVehicle(id))
     }
   }
 
-  const addVehicleHandler = (vehicle) => {
-    // Add Evhicle
+  const addVehicleHandler = () => {
+    dispatch(createVehicle())
   }
 
   useEffect(() => {
-    if (userInfo && userInfo.isAdmin) {
-      dispatch(listVehicles())
-    } else {
+    dispatch({ type: VEHICLE_CREATE_RESET })
+    if (!userInfo.isAdmin) {
       history.push('/profile')
     }
-  }, [dispatch, history, userInfo])
+    if (successCreate) {
+      history.push(`/admin/vehicle/${createdVehicle._id}/edit`)
+    } else {
+      dispatch(listVehicles())
+    }
+  }, [
+    dispatch,
+    history,
+    userInfo,
+    successDelete,
+    successCreate,
+    createdVehicle,
+  ])
 
   return (
     <>
@@ -114,6 +145,10 @@ const VehicleListAdmin = ({ history, match }) => {
       </Div>
       <VehicleListAdminContainer>
         <VehicleListAdminWrapper>
+          {loadingCreate && <LoaderMin />}
+          {errorCreate && <Message variant="error">{errorCreate}</Message>}
+          {loadingDelete && <LoaderMin />}
+          {errorDelete && <Message variant="error">{errorDelete}</Message>}
           {loading ? (
             <LoaderMin />
           ) : error ? (
