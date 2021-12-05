@@ -69,58 +69,62 @@ const createVehicle = asyncHandler(async (req, res) => {
 // @access  Private/Admin
 
 const updatedVehicle = asyncHandler(async (req, res) => {
-  console.log(req.body)
+  // console.log(req.body)
   const {
     name,
     slug,
-    // slogan,
-    // description,
-    // specifications: {
-    //   engine,
-    //   transmission,
-    //   suspension,
-    //   wheel,
-    //   brakes,
-    //   steering,
-    //   dimensions: {
-    //     overallVehicle,
-    //     wheelbase,
-    //     deckInner,
-    //     turningCircleRadius,
-    //     groundClearance,
-    //   },
-    //   capacity: {
-    //     deckCarryingCapacity,
-    //     kerbWeight,
-    //     totalSeatingCapacity,
-    //     fuelTank,
-    //   },
-    // },
-    // comfortAndConvinience,
-    // safetyAndSecurity,
+    slogan,
+    description,
+    image,
+    specifications: {
+      engine,
+      transmission,
+      suspension,
+      wheel,
+      brakes,
+      steering,
+      dimensions: {
+        overallVehicle,
+        wheelbase,
+        deckInner,
+        turningCircleRadius,
+        groundClearance,
+      },
+      capacity: {
+        deckCarryingCapacity,
+        kerbWeight,
+        totalSeatingCapacity,
+        fuelTank,
+      },
+    },
+    comfortAndConvinience,
+    safetyAndSecurity,
   } = req.body
 
   const vehicle = await Vehicle.findById(req.params.id)
   if (vehicle) {
     vehicle.name = name
     vehicle.slug = slug
-    // vehicle.specifications.engine = engine
-    // vehicle.specification.transmission = transmission
-    // vehicle.specification.suspension = suspension
-    // vehicle.specification.wheel = wheel
-    // vehicle.specification.brakes = brakes
-    // vehicle.specification.steering = steering
-    // vehicle.specification.overallVehicle = overallVehicle
-    // vehicle.specification.wheelbase = wheelbase
-    // vehicle.specification.deckInner = deckInner
-    // vehicle.specification.turningCircleRadius = turningCircleRadius
-    // vehicle.specification.groundClearance = groundClearance
-    // vehicle.specification.deckCarryingCapacity = deckCarryingCapacity
-    // vehicle.specification.kerbWeight = kerbWeight
-    // vehicle.specification.totalSeatingCapacity = totalSeatingCapacity
-    // vehicle.specification.fuelTank = fuelTank
-    // vehicle.specification.comfortAndConvinience = comfortAndConvinience
-    // vehicle.specification.safetyAndSecurity = safetyAndSecurity
+    vehicle.slogan = slogan
+    vehicle.description = description
+    vehicle.image = image
+    vehicle.specifications.engine = engine
+    vehicle.specifications.transmission = transmission
+    vehicle.specifications.suspension = suspension
+    vehicle.specifications.wheel = wheel
+    vehicle.specifications.brakes = brakes
+    vehicle.specifications.steering = steering
+    vehicle.specifications.overallVehicle = overallVehicle
+    vehicle.specifications.wheelbase = wheelbase
+    vehicle.specifications.deckInner = deckInner
+    vehicle.specifications.turningCircleRadius = turningCircleRadius
+    vehicle.specifications.groundClearance = groundClearance
+    vehicle.specifications.deckCarryingCapacity = deckCarryingCapacity
+    vehicle.specifications.kerbWeight = kerbWeight
+    vehicle.specifications.totalSeatingCapacity = totalSeatingCapacity
+    vehicle.specifications.fuelTank = fuelTank
+    vehicle.specifications.comfortAndConvinience = comfortAndConvinience
+    vehicle.specifications.safetyAndSecurity = safetyAndSecurity
 
     const updatedVehicle = await vehicle.save()
     res.json(updatedVehicle)

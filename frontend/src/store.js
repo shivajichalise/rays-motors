@@ -6,6 +6,7 @@ import {
   vehicleDetailsReducer,
   vehicleDeleteReducer,
   vehicleCreateReducer,
+  vehicleUpdateReducer,
 } from './reducers/vehicleReducers'
 import {
   userLoginReducer,
@@ -29,6 +30,7 @@ const reducer = combineReducers({
   userDelete: userDeleteReducer,
   userUpdate: userUpdateReducer,
   vehicleCreate: vehicleCreateReducer,
+  vehicleUpdate: vehicleUpdateReducer,
 })
 
 const userInfoFromStorage = localStorage.getItem('userInfo')

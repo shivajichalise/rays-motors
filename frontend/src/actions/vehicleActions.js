@@ -12,6 +12,9 @@ import {
   VEHICLE_CREATE_SUCCESS,
   VEHICLE_CREATE_FAIL,
   VEHICLE_CREATE_REQUEST,
+  VEHICLE_UPDATE_SUCCESS,
+  VEHICLE_UPDATE_FAIL,
+  VEHICLE_UPDATE_REQUEST,
 } from '../constants/vehicleConstants'
 
 export const listVehicles = () => async (dispatch) => {
@@ -109,6 +112,44 @@ export const createVehicle = () => async (dispatch, getState) => {
   } catch (error) {
     dispatch({
       type: VEHICLE_CREATE_FAIL,
+      payload:
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message,
+    })
+  }
+}
+
+export const updateVehicle = (vehicle) => async (dispatch, getState) => {
+  try {
+    dispatch({
+      type: VEHICLE_UPDATE_REQUEST,
+    })
+
+    const {
+      userLogin: { userInfo },
+    } = getState()
+
+    const config = {
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${userInfo.token}`,
+      },
+    }
+
+    const { data } = await axios.put(
+      `/api/vehicles/${vehicle._id}`,
+      vehicle,
+      config
+    )
+
+    dispatch({
+      type: VEHICLE_UPDATE_SUCCESS,
+      payload: data,
+    })
+  } catch (error) {
+    dispatch({
+      type: VEHICLE_UPDATE_FAIL,
       payload:
         error.response && error.response.data.message
           ? error.response.data.message

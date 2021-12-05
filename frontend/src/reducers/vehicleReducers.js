@@ -12,6 +12,10 @@ import {
   VEHICLE_CREATE_FAIL,
   VEHICLE_CREATE_SUCCESS,
   VEHICLE_CREATE_REQUEST,
+  VEHICLE_UPDATE_RESET,
+  VEHICLE_UPDATE_FAIL,
+  VEHICLE_UPDATE_SUCCESS,
+  VEHICLE_UPDATE_REQUEST,
 } from '../constants/vehicleConstants'
 
 export const vehicleListReducer = (state = { vehicles: [] }, action) => {
@@ -63,6 +67,21 @@ export const vehicleCreateReducer = (state = {}, action) => {
       return { loading: false, error: action.payload }
     case VEHICLE_CREATE_RESET:
       return {}
+    default:
+      return state
+  }
+}
+
+export const vehicleUpdateReducer = (state = { vehicle: {} }, action) => {
+  switch (action.type) {
+    case VEHICLE_UPDATE_REQUEST:
+      return { loading: true }
+    case VEHICLE_UPDATE_SUCCESS:
+      return { loading: false, success: true, vehicle: action.payload }
+    case VEHICLE_UPDATE_FAIL:
+      return { loading: false, error: action.payload }
+    case VEHICLE_UPDATE_RESET:
+      return { vehicle: {} }
     default:
       return state
   }
