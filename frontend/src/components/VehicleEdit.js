@@ -47,7 +47,8 @@ const TDMultiple = styled.td`
   ${TDStyle}
   display: grid;
   grid-gap: 10px;
-  grid-template-columns: auto auto auto;
+  grid-template-columns: ${({ numberOfFields }) =>
+    numberOfFields && `repeat(${numberOfFields}, auto)`};
 `
 
 const TR = styled.tr`
@@ -66,7 +67,7 @@ const FormInput = styled.input`
   padding: 10px 10px;
   border: none;
   border-radius: 4px;
-  width: 600px;
+  width: 530px;
 `
 
 const FormButton = styled.button`
@@ -83,8 +84,23 @@ const FormInputSmall = styled.input`
   padding: 10px 10px;
   border: none;
   border-radius: 4px;
-  width: 190px;
+  width: 120px;
 `
+
+const Select = styled.select`
+  color: ${isuzuTheme.text};
+  padding: 10px 10px;
+  border: none;
+  border-radius: 4px;
+  width: 70px;
+  background: ${isuzuTheme.grey};
+  cursor: pointer;
+
+  &:hover {
+    outline: none;
+  }
+`
+
 const TextArea = styled.textarea`
   padding: 16px 16px;
   border: none;
@@ -204,8 +220,8 @@ const VehicleEdit = ({ match, history }) => {
     totalSeatingCapacity: 0,
   })
 
-  const [comfortAndConvinience, setComfortAndConvinience] = useState([''])
-  const [safetyAndSecurity, setSafetyAndSecurity] = useState([''])
+  const [comfortAndConvinience, setComfortAndConvinience] = useState([])
+  const [safetyAndSecurity, setSafetyAndSecurity] = useState([])
 
   // const [vehicleInfo, setVehicleInfo] = useState({})
 
@@ -222,11 +238,11 @@ const VehicleEdit = ({ match, history }) => {
   } = vehicleUpdate
 
   const createSafetyArray = (value) => {
-    setSafetyAndSecurity(value.split(','))
+    setSafetyAndSecurity([...value.split(',')])
   }
 
   const createComfortArray = (value) => {
-    setComfortAndConvinience(value.split(','))
+    setComfortAndConvinience([...value.split(',')])
   }
 
   const submitHandler = (e) => {
@@ -817,9 +833,9 @@ const VehicleEdit = ({ match, history }) => {
                     </TR>
                     <TR>
                       <TD>Overall Vehicle (LxWxH)</TD>
-                      <TDMultiple>
+                      <TDMultiple numberOfFields={6}>
                         <FormInputSmall
-                          type="text"
+                          type="number"
                           value={overallVehicleDimension.length.value}
                           onChange={(e) => {
                             setOverallVehicleDimension({
@@ -831,8 +847,25 @@ const VehicleEdit = ({ match, history }) => {
                             })
                           }}
                         />
+                        <Select
+                          value={overallVehicleDimension.length.unit}
+                          onChange={(e) => {
+                            setOverallVehicleDimension({
+                              ...overallVehicleDimension,
+                              length: {
+                                ...overallVehicleDimension.length,
+                                unit: e.target.value,
+                              },
+                            })
+                          }}
+                        >
+                          <option disabled>Unit *</option>
+                          <option value="mm">mm</option>
+                          <option value="m">m</option>
+                          <option value="L">L</option>
+                        </Select>
                         <FormInputSmall
-                          type="text"
+                          type="number"
                           value={overallVehicleDimension.breadth.value}
                           onChange={(e) => {
                             setOverallVehicleDimension({
@@ -844,8 +877,25 @@ const VehicleEdit = ({ match, history }) => {
                             })
                           }}
                         />
+                        <Select
+                          value={overallVehicleDimension.breadth.value}
+                          onChange={(e) => {
+                            setOverallVehicleDimension({
+                              ...overallVehicleDimension,
+                              breadth: {
+                                ...overallVehicleDimension.breadth,
+                                unit: e.target.value,
+                              },
+                            })
+                          }}
+                        >
+                          <option disabled>Unit *</option>
+                          <option value="mm">mm</option>
+                          <option value="m">m</option>
+                          <option value="L">L</option>
+                        </Select>
                         <FormInputSmall
-                          type="text"
+                          type="number"
                           value={overallVehicleDimension.height.value}
                           onChange={(e) => {
                             setOverallVehicleDimension({
@@ -857,13 +907,30 @@ const VehicleEdit = ({ match, history }) => {
                             })
                           }}
                         />
+                        <Select
+                          value={overallVehicleDimension.height.value}
+                          onChange={(e) => {
+                            setOverallVehicleDimension({
+                              ...overallVehicleDimension,
+                              height: {
+                                ...overallVehicleDimension.height,
+                                unit: e.target.value,
+                              },
+                            })
+                          }}
+                        >
+                          <option disabled>Unit *</option>
+                          <option value="mm">mm</option>
+                          <option value="m">m</option>
+                          <option value="L">L</option>
+                        </Select>
                       </TDMultiple>
                     </TR>
                     <TR>
                       <TD>Deck Inner (LxWxH)</TD>
-                      <TDMultiple>
+                      <TDMultiple numberOfFields={6}>
                         <FormInputSmall
-                          type="text"
+                          type="number"
                           value={vehicleDeckInnerDimension.length.value}
                           onChange={(e) => {
                             setVehicleDeckInnerDimension({
@@ -875,8 +942,25 @@ const VehicleEdit = ({ match, history }) => {
                             })
                           }}
                         />
+                        <Select
+                          value={vehicleDeckInnerDimension.length.unit}
+                          onChange={(e) => {
+                            setVehicleDeckInnerDimension({
+                              ...vehicleDeckInnerDimension,
+                              length: {
+                                ...vehicleDeckInnerDimension.length,
+                                unit: e.target.value,
+                              },
+                            })
+                          }}
+                        >
+                          <option disabled>Unit *</option>
+                          <option value="mm">mm</option>
+                          <option value="m">m</option>
+                          <option value="L">L</option>
+                        </Select>
                         <FormInputSmall
-                          type="text"
+                          type="number"
                           value={vehicleDeckInnerDimension.breadth.value}
                           onChange={(e) => {
                             setVehicleDeckInnerDimension({
@@ -888,8 +972,25 @@ const VehicleEdit = ({ match, history }) => {
                             })
                           }}
                         />
+                        <Select
+                          value={vehicleDeckInnerDimension.breadth.unit}
+                          onChange={(e) => {
+                            setVehicleDeckInnerDimension({
+                              ...vehicleDeckInnerDimension,
+                              breadth: {
+                                ...vehicleDeckInnerDimension.breadth,
+                                unit: e.target.value,
+                              },
+                            })
+                          }}
+                        >
+                          <option disabled>Unit *</option>
+                          <option value="mm">mm</option>
+                          <option value="m">m</option>
+                          <option value="L">L</option>
+                        </Select>
                         <FormInputSmall
-                          type="text"
+                          type="number"
                           value={vehicleDeckInnerDimension.height.value}
                           onChange={(e) => {
                             setVehicleDeckInnerDimension({
@@ -901,13 +1002,30 @@ const VehicleEdit = ({ match, history }) => {
                             })
                           }}
                         />
+                        <Select
+                          value={vehicleDeckInnerDimension.height.unit}
+                          onChange={(e) => {
+                            setVehicleDeckInnerDimension({
+                              ...vehicleDeckInnerDimension,
+                              height: {
+                                ...vehicleDeckInnerDimension.height,
+                                unit: e.target.value,
+                              },
+                            })
+                          }}
+                        >
+                          <option disabled>Unit *</option>
+                          <option value="mm">mm</option>
+                          <option value="m">m</option>
+                          <option value="L">L</option>
+                        </Select>
                       </TDMultiple>
                     </TR>
                     <TR>
                       <TD>Wheelbase</TD>
-                      <TD>
+                      <TDMultiple numberOfFields={2}>
                         <FormInput
-                          type="text"
+                          type="number"
                           value={vehicleDimensions.wheelbase.value}
                           onChange={(e) => {
                             setVehicleDimensions({
@@ -919,13 +1037,30 @@ const VehicleEdit = ({ match, history }) => {
                             })
                           }}
                         />
-                      </TD>
+                        <Select
+                          value={vehicleDimensions.wheelbase.unit}
+                          onChange={(e) => {
+                            setVehicleDimensions({
+                              ...vehicleDimensions,
+                              wheelbase: {
+                                ...vehicleDimensions.wheelbase,
+                                unit: e.target.value,
+                              },
+                            })
+                          }}
+                        >
+                          <option disabled>Unit *</option>
+                          <option value="mm">mm</option>
+                          <option value="m">m</option>
+                          <option value="L">L</option>
+                        </Select>
+                      </TDMultiple>
                     </TR>
                     <TR>
                       <TD>Turning Circle Radius</TD>
-                      <TD>
+                      <TDMultiple numberOfFields={2}>
                         <FormInput
-                          type="text"
+                          type="number"
                           value={vehicleDimensions.turningCircleRadius.value}
                           onChange={(e) => {
                             setVehicleDimensions({
@@ -937,13 +1072,30 @@ const VehicleEdit = ({ match, history }) => {
                             })
                           }}
                         />
-                      </TD>
+                        <Select
+                          value={vehicleDimensions.turningCircleRadius.value}
+                          onChange={(e) => {
+                            setVehicleDimensions({
+                              ...vehicleDimensions,
+                              turningCircleRadius: {
+                                ...vehicleDimensions.turningCircleRadius,
+                                unit: e.target.value,
+                              },
+                            })
+                          }}
+                        >
+                          <option disabled>Unit *</option>
+                          <option value="mm">mm</option>
+                          <option value="m">m</option>
+                          <option value="L">L</option>
+                        </Select>
+                      </TDMultiple>
                     </TR>
                     <TR>
                       <TD>Ground Clearance</TD>
-                      <TD>
+                      <TDMultiple numberOfFields={2}>
                         <FormInput
-                          type="text"
+                          type="number"
                           value={vehicleDimensions.groundClearance.value}
                           onChange={(e) => {
                             setVehicleDimensions({
@@ -955,7 +1107,24 @@ const VehicleEdit = ({ match, history }) => {
                             })
                           }}
                         />
-                      </TD>
+                        <Select
+                          value={vehicleDimensions.groundClearance.value}
+                          onChange={(e) => {
+                            setVehicleDimensions({
+                              ...vehicleDimensions,
+                              groundClearance: {
+                                ...vehicleDimensions.groundClearance,
+                                unit: e.target.value,
+                              },
+                            })
+                          }}
+                        >
+                          <option disabled>Unit *</option>
+                          <option value="mm">mm</option>
+                          <option value="m">m</option>
+                          <option value="L">L</option>
+                        </Select>
+                      </TDMultiple>
                     </TR>
                     <TR>
                       <TH className="header" colSpan={2}>
@@ -964,9 +1133,9 @@ const VehicleEdit = ({ match, history }) => {
                     </TR>
                     <TR>
                       <TD>Deck Carrying Capacity</TD>
-                      <TD>
+                      <TDMultiple numberOfFields={2}>
                         <FormInput
-                          type="text"
+                          type="number"
                           value={vehicleCapacity.deckCarryingCapacity.value}
                           onChange={(e) => {
                             setVehicleCapacity({
@@ -978,13 +1147,30 @@ const VehicleEdit = ({ match, history }) => {
                             })
                           }}
                         />
-                      </TD>
+                        <Select
+                          value={vehicleCapacity.deckCarryingCapacity.value}
+                          onChange={(e) => {
+                            setVehicleCapacity({
+                              ...vehicleCapacity,
+                              deckCarryingCapacity: {
+                                ...vehicleCapacity.deckCarryingCapacity,
+                                unit: e.target.value,
+                              },
+                            })
+                          }}
+                        >
+                          <option disabled>Unit *</option>
+                          <option value="mm">mm</option>
+                          <option value="m">m</option>
+                          <option value="L">L</option>
+                        </Select>
+                      </TDMultiple>
                     </TR>
                     <TR>
                       <TD>Kerb Weight</TD>
-                      <TD>
+                      <TDMultiple numberOfFields={2}>
                         <FormInput
-                          type="text"
+                          type="number"
                           value={vehicleCapacity.kerbWeight.value}
                           onChange={(e) => {
                             setVehicleCapacity({
@@ -996,7 +1182,24 @@ const VehicleEdit = ({ match, history }) => {
                             })
                           }}
                         />
-                      </TD>
+                        <Select
+                          value={vehicleCapacity.kerbWeight.value}
+                          onChange={(e) => {
+                            setVehicleCapacity({
+                              ...vehicleCapacity,
+                              kerbWeight: {
+                                ...vehicleCapacity.kerbWeight,
+                                unit: e.target.value,
+                              },
+                            })
+                          }}
+                        >
+                          <option disabled>Unit *</option>
+                          <option value="mm">mm</option>
+                          <option value="m">m</option>
+                          <option value="L">L</option>
+                        </Select>
+                      </TDMultiple>
                     </TR>
                     <TR>
                       <TD>Total Seating Capacity</TD>
@@ -1015,9 +1218,9 @@ const VehicleEdit = ({ match, history }) => {
                     </TR>
                     <TR>
                       <TD>Fuel Tank</TD>
-                      <TD>
+                      <TDMultiple numberOfFields={2}>
                         <FormInput
-                          type="text"
+                          type="number"
                           value={vehicleCapacity.fuelTank.value}
                           onChange={(e) => {
                             setVehicleCapacity({
@@ -1029,7 +1232,24 @@ const VehicleEdit = ({ match, history }) => {
                             })
                           }}
                         />
-                      </TD>
+                        <Select
+                          value={vehicleCapacity.fuelTank.value}
+                          onChange={(e) => {
+                            setVehicleCapacity({
+                              ...vehicleCapacity,
+                              fuelTank: {
+                                ...vehicleCapacity.fuelTank,
+                                unit: e.target.value,
+                              },
+                            })
+                          }}
+                        >
+                          <option disabled>Unit *</option>
+                          <option value="mm">mm</option>
+                          <option value="m">m</option>
+                          <option value="L">L</option>
+                        </Select>
+                      </TDMultiple>
                     </TR>
                     <TR>
                       <TH className="header" colSpan={2}>
@@ -1040,7 +1260,7 @@ const VehicleEdit = ({ match, history }) => {
                       <TD colSpan={2}>
                         <TextArea
                           onChange={(e) => createComfortArray(e.target.value)}
-                          value={comfortAndConvinience}
+                          value={comfortAndConvinience.map((item) => item)}
                         ></TextArea>
                       </TD>
                     </TR>
@@ -1053,7 +1273,7 @@ const VehicleEdit = ({ match, history }) => {
                       <TD colSpan={2}>
                         <TextArea
                           onChange={(e) => createSafetyArray(e.target.value)}
-                          value={safetyAndSecurity}
+                          value={safetyAndSecurity.map((item) => item)}
                         ></TextArea>
                       </TD>
                     </TR>

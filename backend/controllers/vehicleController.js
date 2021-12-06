@@ -114,17 +114,17 @@ const updatedVehicle = asyncHandler(async (req, res) => {
     vehicle.specifications.wheel = wheel
     vehicle.specifications.brakes = brakes
     vehicle.specifications.steering = steering
-    vehicle.specifications.overallVehicle = overallVehicle
-    vehicle.specifications.wheelbase = wheelbase
-    vehicle.specifications.deckInner = deckInner
-    vehicle.specifications.turningCircleRadius = turningCircleRadius
-    vehicle.specifications.groundClearance = groundClearance
-    vehicle.specifications.deckCarryingCapacity = deckCarryingCapacity
-    vehicle.specifications.kerbWeight = kerbWeight
-    vehicle.specifications.totalSeatingCapacity = totalSeatingCapacity
-    vehicle.specifications.fuelTank = fuelTank
-    vehicle.specifications.comfortAndConvinience = comfortAndConvinience
-    vehicle.specifications.safetyAndSecurity = safetyAndSecurity
+    vehicle.specifications.dimensions.overallVehicle = overallVehicle
+    vehicle.specifications.dimensions.wheelbase = wheelbase
+    vehicle.specifications.dimensions.deckInner = deckInner
+    vehicle.specifications.dimensions.turningCircleRadius = turningCircleRadius
+    vehicle.specifications.dimensions.groundClearance = groundClearance
+    vehicle.specifications.capacity.deckCarryingCapacity = deckCarryingCapacity
+    vehicle.specifications.capacity.kerbWeight = kerbWeight
+    vehicle.specifications.capacity.totalSeatingCapacity = totalSeatingCapacity
+    vehicle.specifications.capacity.fuelTank = fuelTank
+    vehicle.comfortAndConvinience = comfortAndConvinience
+    vehicle.safetyAndSecurity = safetyAndSecurity
 
     const updatedVehicle = await vehicle.save()
     res.json(updatedVehicle)

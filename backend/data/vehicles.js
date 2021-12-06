@@ -1,12 +1,11 @@
 export const vehicleSample = {
   name: 'Sample Vehicle',
   slug: 'scab',
-  slogan: 'Success is a Long Journey. Start Here.',
-  description:
-    'Purposeful design, a spacious passenger cabin, a large and strong cargo deck. Every feature on the S-CAB has been carefully considered to maximise utility and enhance efficiency so that you can maximise your success.',
+  slogan: 'Sample Slogan',
+  description: 'Sample Description',
   image: {
-    banner: '../images/cars/banners/scab.jpg',
-    portrait: '../images/cars/portraits/scab.jpg',
+    banner: '../images/cars/banners/sample.jpg',
+    portrait: '../images/cars/portraits/sample.jpg',
   },
   specifications: {
     engine: {
