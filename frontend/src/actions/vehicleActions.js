@@ -15,6 +15,9 @@ import {
   VEHICLE_UPDATE_SUCCESS,
   VEHICLE_UPDATE_FAIL,
   VEHICLE_UPDATE_REQUEST,
+  VEHICLE_COMPARE_DETAILS_REQUEST,
+  VEHICLE_COMPARE_DETAILS_SUCCESS,
+  VEHICLE_COMPARE_DETAILS_FAIL,
 } from '../constants/vehicleConstants'
 
 export const listVehicles = () => async (dispatch) => {
@@ -62,6 +65,32 @@ export const listVehicleDetails = (id) => async (dispatch) => {
     })
   }
 }
+
+export const listCompareVehiclesDetails =
+  (leftVehicleId, rightVehicleId) => async (dispatch) => {
+    try {
+      dispatch({
+        type: VEHICLE_COMPARE_DETAILS_REQUEST,
+      })
+
+      const { data } = await axios.get(
+        `/api/vehicles/${leftVehicleId}/${rightVehicleId}`
+      )
+
+      dispatch({
+        type: VEHICLE_COMPARE_DETAILS_SUCCESS,
+        payload: data,
+      })
+    } catch (error) {
+      dispatch({
+        type: VEHICLE_COMPARE_DETAILS_FAIL,
+        payload:
+          error.response && error.response.data.message
+            ? error.response.data.message
+            : error.message,
+      })
+    }
+  }
 
 export const deleteVehicle = (id) => async (dispatch, getState) => {
   try {

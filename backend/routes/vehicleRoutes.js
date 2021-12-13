@@ -2,6 +2,7 @@ import express from 'express'
 import {
   getVehicles,
   getVehicleById,
+  getTwoVehicleById,
   deleteVehicle,
   createVehicle,
   updatedVehicle,
@@ -16,5 +17,5 @@ router
   .get(getVehicleById)
   .delete(protect, isAdmin, deleteVehicle)
   .put(protect, isAdmin, updatedVehicle)
-
+router.route('/:leftId/:rightId').get(getTwoVehicleById)
 export default router

@@ -1,10 +1,15 @@
-import React, { useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import styled from 'styled-components'
 import { useDispatch, useSelector } from 'react-redux'
 import { listVehicles } from '../actions/vehicleActions'
 import Hr from './Hr'
 import { isuzuTheme } from '../styles/theme'
 import Loader from './Loader'
+import LoaderMin from './LoaderMin'
+import Swal from 'sweetalert2'
+import withReactContent from 'sweetalert2-react-content'
+import emailjs from 'emailjs-com'
+import ReCAPTCHA from 'react-google-recaptcha'
 
 const QuoteContainer = styled.div`
   background: ${isuzuTheme.card};
@@ -90,6 +95,54 @@ const TextArea = styled.textarea`
   resize: none;
 `
 const GetQuote = () => {
+  const MySwal = withReactContent(Swal)
+
+  const form = useRef()
+
+  const [isSending, setIsSending] = useState(false)
+  const [isVerified, setIsVerified] = useState(false)
+
+  const submitHandler = (e) => {
+    setIsSending(true)
+    e.preventDefault()
+    emailjs
+      .sendForm(
+        'service_t5dokeo',
+        'template_07y31yi',
+        form.current,
+        'user_R1GcPi2XjFqNdrvoCg3LW'
+      )
+      .then(
+        (result) => {
+          MySwal.fire({
+            icon: 'success',
+            title: 'Great!',
+            text: "We just recieved your request for quotation. We'll get back to you ASAP.",
+          })
+        },
+        (error) => {
+          MySwal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Something went wrong! Please try again later.',
+          })
+        }
+      )
+      .then(
+        (result) => {
+          setIsSending(false)
+        },
+        (error) => {
+          setIsSending(false)
+        }
+      )
+    e.target.reset()
+  }
+
+  const onChangeCaptcha = () => {
+    setIsVerified(true)
+  }
+
   const dispatch = useDispatch()
   const vehicleList = useSelector((state) => state.vehicleList)
   const { loading, error, vehicles } = vehicleList
@@ -111,13 +164,13 @@ const GetQuote = () => {
           <h1>{error}</h1>
         ) : (
           <FormWrapper>
-            <Form>
-              <Select defaultValue={'DEFAULT'}>
+            <Form ref={form} onSubmit={submitHandler}>
+              <Select defaultValue={'DEFAULT'} name="vehicle_name" required>
                 <option value="DEFAULT" disabled>
                   Choose Model *
                 </option>
                 {vehicles.map((vehicle, index) => (
-                  <option key={index} value={vehicle._id}>
+                  <option key={index} value={vehicle.name}>
                     {vehicle.name}
                   </option>
                 ))}
@@ -135,7 +188,17 @@ const GetQuote = () => {
                 required
               />
               <TextArea name="message" placeholder="Your Message *"></TextArea>
-              <FormButton type="submit">Get Quote</FormButton>
+              <ReCAPTCHA
+                sitekey="6Ld9nbccAAAAAAceiSh2tlbODOAnKO2jPHcvj3kR"
+                onChange={onChangeCaptcha}
+              />
+              {isSending ? (
+                <LoaderMin />
+              ) : (
+                <FormButton type="submit" disabled={!isVerified}>
+                  Request Quote
+                </FormButton>
+              )}
             </Form>
           </FormWrapper>
         )}

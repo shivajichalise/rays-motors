@@ -25,6 +25,22 @@ const getVehicleById = asyncHandler(async (req, res) => {
   }
 })
 
+// @desc    Fetch two vehicle by id
+// @route   Get /api/vehicles/:leftId/:rightId
+// @access  Public
+
+const getTwoVehicleById = asyncHandler(async (req, res) => {
+  const leftVehicle = await Vehicle.findById(req.params.leftId)
+  const rightVehicle = await Vehicle.findById(req.params.rightId)
+  const vehicles = [leftVehicle, rightVehicle]
+  if (vehicles) {
+    res.json(vehicles)
+  } else {
+    res.status(404)
+    throw new Error('Vehicle not found')
+  }
+})
+
 // @desc    Fetch single vehicle by slug
 // @route   Get /api/vehicle/:slug
 // @access  Public
@@ -137,6 +153,7 @@ const updatedVehicle = asyncHandler(async (req, res) => {
 export {
   getVehicles,
   getVehicleById,
+  getTwoVehicleById,
   getVehicleBySlug,
   deleteVehicle,
   createVehicle,

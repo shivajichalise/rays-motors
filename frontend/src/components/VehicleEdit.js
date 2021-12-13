@@ -1,3 +1,4 @@
+import axios from 'axios'
 import React, { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import styled, { css } from 'styled-components/macro'
@@ -223,7 +224,7 @@ const VehicleEdit = ({ match, history }) => {
   const [comfortAndConvinience, setComfortAndConvinience] = useState([])
   const [safetyAndSecurity, setSafetyAndSecurity] = useState([])
 
-  // const [vehicleInfo, setVehicleInfo] = useState({})
+  const [uploading, setUploading] = useState(false)
 
   const dispatch = useDispatch()
 
@@ -243,6 +244,62 @@ const VehicleEdit = ({ match, history }) => {
 
   const createComfortArray = (value) => {
     setComfortAndConvinience([...value.split(',')])
+  }
+
+  const bannerUploadHandler = async (e) => {
+    const file = e.target.files[0]
+    const formData = new FormData()
+    formData.append('image', file)
+    setUploading(true)
+
+    try {
+      const config = {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        },
+      }
+
+      const { data } = await axios.post('/api/upload', formData, config)
+      setVehicleBasic({
+        ...vehicleBasic,
+        image: {
+          ...vehicleBasic.image,
+          banner: data,
+        },
+      })
+      setUploading(false)
+    } catch (error) {
+      console.error(error)
+      setUploading(false)
+    }
+  }
+
+  const portraitUploadHandler = async (e) => {
+    const file = e.target.files[0]
+    const formData = new FormData()
+    formData.append('image', file)
+    setUploading(true)
+
+    try {
+      const config = {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        },
+      }
+
+      const { data } = await axios.post('/api/upload', formData, config)
+      setVehicleBasic({
+        ...vehicleBasic,
+        image: {
+          ...vehicleBasic.image,
+          portrait: data,
+        },
+      })
+      setUploading(false)
+    } catch (error) {
+      console.error(error)
+      setUploading(false)
+    }
   }
 
   const submitHandler = (e) => {
@@ -531,7 +588,7 @@ const VehicleEdit = ({ match, history }) => {
                     </TR>
                     <TR>
                       <TD>Banner</TD>
-                      <TD>
+                      <TDMultiple numberOfFields={6}>
                         <FormInput
                           type="text"
                           onChange={(e) => {
@@ -545,11 +602,18 @@ const VehicleEdit = ({ match, history }) => {
                           }}
                           value={vehicleBasic.image.banner}
                         />
-                      </TD>
+                        <FormInputSmall
+                          type="file"
+                          id="image-file"
+                          label="Choose Image"
+                          onChange={bannerUploadHandler}
+                        />
+                        {uploading && <LoaderMin />}
+                      </TDMultiple>
                     </TR>
                     <TR>
                       <TD>Portrait</TD>
-                      <TD>
+                      <TDMultiple numberOfFields={6}>
                         <FormInput
                           type="text"
                           onChange={(e) => {
@@ -563,7 +627,13 @@ const VehicleEdit = ({ match, history }) => {
                           }}
                           value={vehicleBasic.image.portrait}
                         />
-                      </TD>
+                        <FormInputSmall
+                          type="file"
+                          id="image-file"
+                          label="Choose Image"
+                          onChange={portraitUploadHandler}
+                        />
+                      </TDMultiple>
                     </TR>
                     <TR>
                       <TH className="header" colSpan={2}>

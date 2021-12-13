@@ -16,6 +16,9 @@ import {
   VEHICLE_UPDATE_FAIL,
   VEHICLE_UPDATE_SUCCESS,
   VEHICLE_UPDATE_REQUEST,
+  VEHICLE_COMPARE_DETAILS_REQUEST,
+  VEHICLE_COMPARE_DETAILS_SUCCESS,
+  VEHICLE_COMPARE_DETAILS_FAIL,
 } from '../constants/vehicleConstants'
 
 export const vehicleListReducer = (state = { vehicles: [] }, action) => {
@@ -38,6 +41,22 @@ export const vehicleDetailsReducer = (state = { vehicle: {} }, action) => {
     case VEHICLE_DETAILS_SUCCESS:
       return { loading: false, vehicle: action.payload }
     case VEHICLE_DETAILS_FAIL:
+      return { loading: false, error: action.payload }
+    default:
+      return state
+  }
+}
+
+export const vehicleCompareDetailsReducer = (
+  state = { vehicles: [] },
+  action
+) => {
+  switch (action.type) {
+    case VEHICLE_COMPARE_DETAILS_REQUEST:
+      return { loading: true, vehicles: [] }
+    case VEHICLE_COMPARE_DETAILS_SUCCESS:
+      return { loading: false, vehicles: action.payload }
+    case VEHICLE_COMPARE_DETAILS_FAIL:
       return { loading: false, error: action.payload }
     default:
       return state

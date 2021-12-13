@@ -19,7 +19,7 @@ const Home = () => {
   return (
     <>
       <GlobalStyle />
-      <SideBar isOpen={isOpen} toggle={toggle} />
+      <SideBar isOpen={isOpen} toggle={toggle} navData={navData} />
       <NavBar navData={navData} toggle={toggle} />
       <HeroSection />
       <AboutUs />

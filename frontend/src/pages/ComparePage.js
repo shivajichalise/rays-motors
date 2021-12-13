@@ -3,11 +3,11 @@ import NavBar from '../components/NavBarSecond'
 import { vehiclesNavData } from '../data/navData'
 import SideBar from '../components/SideBar'
 import GlobalStyle from '../styles/globalStyles'
-import Quote from '../components/Quote'
+import Compare from '../components/Compare'
 import Footer from '../components/Footer'
 import ScrollToTop from '../components/ScrollToTop'
 
-const GetQuote = () => {
+const ComparePage = () => {
   const [isOpen, setIsOpen] = useState(false)
   const toggle = () => {
     setIsOpen(!isOpen)
@@ -19,10 +19,10 @@ const GetQuote = () => {
       <ScrollToTop />
       <SideBar isOpen={isOpen} toggle={toggle} navData={vehiclesNavData} />
       <NavBar navData={vehiclesNavData} toggle={toggle} />
-      <Quote />
+      <Compare />
       <Footer />
     </>
   )
 }
 
-export default GetQuote
+export default ComparePage

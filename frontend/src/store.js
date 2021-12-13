@@ -4,6 +4,7 @@ import { composeWithDevTools } from 'redux-devtools-extension'
 import {
   vehicleListReducer,
   vehicleDetailsReducer,
+  vehicleCompareDetailsReducer,
   vehicleDeleteReducer,
   vehicleCreateReducer,
   vehicleUpdateReducer,
@@ -21,6 +22,7 @@ import {
 const reducer = combineReducers({
   vehicleList: vehicleListReducer,
   vehicleDetails: vehicleDetailsReducer,
+  vehicleCompare: vehicleCompareDetailsReducer,
   vehicleDelete: vehicleDeleteReducer,
   userLogin: userLoginReducer,
   userRegister: userRegisterReducer,

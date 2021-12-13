@@ -10,6 +10,14 @@ const TableWrapper = styled.div`
 
 const TableTag = styled.table`
   padding: 1rem 0 2rem 0;
+
+  @media screen and (max-width: 768px) {
+    font-size: 0.7rem;
+  }
+
+  @media screen and (max-width: 280px) {
+    font-size: 0.5rem;
+  }
 `
 
 const TBODY = styled.tbody``
@@ -125,8 +133,8 @@ const Table = ({ v }) => {
             <TD>{wheel.tyre.type}</TD>
           </TR>
           <TR>
-            <TD>Tyre Type</TD>
-            <TD>{wheel.tyre.type}</TD>
+            <TD>Rim Type</TD>
+            <TD>{wheel.rimType}</TD>
           </TR>
           <TR>
             <TH className="header" colSpan={2}>
