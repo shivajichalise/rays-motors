@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
 import { animateScroll as scroll } from 'react-scroll'
-import logo from '../images/isuzu-logo-sqr.png'
+// import logo from '../images/isuzu-logo-sqr.png'
 import { isuzuTheme } from '../styles/theme'
 
 const FooterContainer = styled.footer`
@@ -99,10 +99,10 @@ const SocialLogo = styled(Link)`
   font-weight: bold;
 `
 
-const FooterImg = styled.img`
-  width: 100px;
-  height: 100px;
-`
+// const FooterImg = styled.img`
+//   width: 100px;
+//   height: 100px;
+// `
 
 const WebsiteRights = styled.small`
   color: #fff;
@@ -120,6 +120,12 @@ const Anchor = styled.a`
     color: ${isuzuTheme.red};
     transition: 0.3 ease-in-out;
   }
+`
+
+const LogoText = styled.h1`
+  font-family: Usuzi;
+  font-size: 1.2rem;
+  font-weight: 200;
 `
 
 const Footer = () => {
@@ -168,11 +174,11 @@ const Footer = () => {
         <SocialMedia>
           <SocialMediaWrapper>
             <SocialLogo to="/" onClick={toggleHome}>
-              <FooterImg src={logo} alt="Rays Motors Logo" />
+              <LogoText>RAYS MOTORS</LogoText>
             </SocialLogo>
-            <SocialLogo to="/">
-              <FooterImg src={logo} alt="Rays Motors Logo" />
-            </SocialLogo>
+            {/* <SocialLogo to="/"> */}
+            {/*   <FooterImg src={logo} alt="Rays Motors Logo" /> */}
+            {/* </SocialLogo> */}
             <WebsiteRights>
               Rays Motors Pvt. Ltd. © {new Date().getFullYear()} All rights
               reserved.

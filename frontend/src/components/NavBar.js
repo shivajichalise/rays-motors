@@ -277,7 +277,9 @@ const NavBar = ({ navData, toggle }) => {
           ))}
         </NavMenu>
         <NavBtn>
-          <NavBtnLink to="/contact">Contact Us</NavBtnLink>
+          <NavBtnLink to="/contact" target="_blank">
+            Contact Us
+          </NavBtnLink>
         </NavBtn>
       </NavbarContainer>
     </Nav>

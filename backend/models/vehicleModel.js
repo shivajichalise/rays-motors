@@ -38,6 +38,10 @@ const vehicleSchema = mongoose.Schema(
         required: true,
       },
     },
+    brochure: {
+      type: String,
+      required: true,
+    },
     specifications: {
       engine: {
         type: {

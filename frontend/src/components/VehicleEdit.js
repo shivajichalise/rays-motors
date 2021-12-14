@@ -123,6 +123,7 @@ const VehicleEdit = ({ match, history }) => {
       banner: '',
       portrait: '',
     },
+    brochure: '',
   })
 
   const [vehicleEngine, setVehicleEngine] = useState({
@@ -224,7 +225,9 @@ const VehicleEdit = ({ match, history }) => {
   const [comfortAndConvinience, setComfortAndConvinience] = useState([])
   const [safetyAndSecurity, setSafetyAndSecurity] = useState([])
 
-  const [uploading, setUploading] = useState(false)
+  const [uploadingBanner, setUploadingBanner] = useState(false)
+  const [uploadingPortrait, setUploadingPortrait] = useState(false)
+  const [uploadingBrochure, setUploadingBrochure] = useState(false)
 
   const dispatch = useDispatch()
 
@@ -249,8 +252,8 @@ const VehicleEdit = ({ match, history }) => {
   const bannerUploadHandler = async (e) => {
     const file = e.target.files[0]
     const formData = new FormData()
-    formData.append('image', file)
-    setUploading(true)
+    formData.append('uploadedFile', file)
+    setUploadingBanner(true)
 
     try {
       const config = {
@@ -267,18 +270,18 @@ const VehicleEdit = ({ match, history }) => {
           banner: data,
         },
       })
-      setUploading(false)
+      setUploadingBanner(false)
     } catch (error) {
       console.error(error)
-      setUploading(false)
+      setUploadingBanner(false)
     }
   }
 
   const portraitUploadHandler = async (e) => {
     const file = e.target.files[0]
     const formData = new FormData()
-    formData.append('image', file)
-    setUploading(true)
+    formData.append('uploadedFile', file)
+    setUploadingPortrait(true)
 
     try {
       const config = {
@@ -295,10 +298,35 @@ const VehicleEdit = ({ match, history }) => {
           portrait: data,
         },
       })
-      setUploading(false)
+      setUploadingPortrait(false)
     } catch (error) {
       console.error(error)
-      setUploading(false)
+      setUploadingPortrait(false)
+    }
+  }
+
+  const brochureUploadHandler = async (e) => {
+    const file = e.target.files[0]
+    const formData = new FormData()
+    formData.append('uploadedFile', file)
+    setUploadingBrochure(true)
+
+    try {
+      const config = {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        },
+      }
+
+      const { data } = await axios.post('/api/upload', formData, config)
+      setVehicleBasic({
+        ...vehicleBasic,
+        brochure: data,
+      })
+      setUploadingBrochure(false)
+    } catch (error) {
+      console.error(error)
+      setUploadingBrochure(false)
     }
   }
 
@@ -360,6 +388,7 @@ const VehicleEdit = ({ match, history }) => {
           slogan,
           description,
           image,
+          brochure,
           specifications: {
             engine,
             transmission,
@@ -394,6 +423,7 @@ const VehicleEdit = ({ match, history }) => {
             banner: image.banner,
             portrait: image.portrait,
           },
+          brochure: brochure,
         })
 
         setVehicleEngine({
@@ -582,6 +612,31 @@ const VehicleEdit = ({ match, history }) => {
                       </TD>
                     </TR>
                     <TR>
+                      <TD>Brochure</TD>
+                      <TDMultiple numberOfFields={6}>
+                        <FormInput
+                          type="text"
+                          onChange={(e) => {
+                            setVehicleBasic({
+                              ...vehicleBasic,
+                              brochure: e.target.value,
+                            })
+                          }}
+                          value={vehicleBasic.brochure}
+                        />
+                        {uploadingBrochure ? (
+                          <LoaderMin />
+                        ) : (
+                          <FormInputSmall
+                            type="file"
+                            id="pdf-file"
+                            label="Choose PDF"
+                            onChange={brochureUploadHandler}
+                          />
+                        )}
+                      </TDMultiple>
+                    </TR>
+                    <TR>
                       <TH className="header" colSpan={2}>
                         Image
                       </TH>
@@ -602,13 +657,16 @@ const VehicleEdit = ({ match, history }) => {
                           }}
                           value={vehicleBasic.image.banner}
                         />
-                        <FormInputSmall
-                          type="file"
-                          id="image-file"
-                          label="Choose Image"
-                          onChange={bannerUploadHandler}
-                        />
-                        {uploading && <LoaderMin />}
+                        {uploadingBanner ? (
+                          <LoaderMin />
+                        ) : (
+                          <FormInputSmall
+                            type="file"
+                            id="image-file"
+                            label="Choose Image"
+                            onChange={bannerUploadHandler}
+                          />
+                        )}
                       </TDMultiple>
                     </TR>
                     <TR>
@@ -627,12 +685,16 @@ const VehicleEdit = ({ match, history }) => {
                           }}
                           value={vehicleBasic.image.portrait}
                         />
-                        <FormInputSmall
-                          type="file"
-                          id="image-file"
-                          label="Choose Image"
-                          onChange={portraitUploadHandler}
-                        />
+                        {uploadingPortrait ? (
+                          <LoaderMin />
+                        ) : (
+                          <FormInputSmall
+                            type="file"
+                            id="image-file"
+                            label="Choose Image"
+                            onChange={portraitUploadHandler}
+                          />
+                        )}
                       </TDMultiple>
                     </TR>
                     <TR>

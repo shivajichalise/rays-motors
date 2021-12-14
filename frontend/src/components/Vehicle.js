@@ -158,13 +158,13 @@ const Vehicle = ({ id }) => {
               </MenuContent>
               <MenuOption>
                 <OptionDiv>
-                  <MenuLink to="/request-quote">
+                  <MenuLink to="/quote">
                     <Quote />
                   </MenuLink>
                   <p>Get a Quote</p>
                 </OptionDiv>
                 <OptionDiv>
-                  <MenuLink to="/vehicles">
+                  <MenuLink to={vehicle.brochure} target="_blank">
                     <Brochure />
                   </MenuLink>
                   <p>Get a Brochure</p>

@@ -17,7 +17,7 @@ const Vehicles = () => {
     <>
       <GlobalStyle />
       <ScrollToTop />
-      <SideBar isOpen={isOpen} toggle={toggle} />
+      <SideBar isOpen={isOpen} toggle={toggle} navData={vehiclesNavData} />
       <NavBar navData={vehiclesNavData} toggle={toggle} />
       <VehiclesList />
       <Footer />

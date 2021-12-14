@@ -8,6 +8,7 @@ import styled from 'styled-components'
 import { isuzuTheme } from '../styles/theme'
 import LoaderMin from './LoaderMin'
 import Message from './Message'
+import Hr from './Hr'
 
 const CompareContainer = styled.div`
   display: flex;
@@ -82,6 +83,12 @@ const Button = styled.button`
   cursor: pointer;
 `
 
+const Header = styled.div``
+
+const H1 = styled.h1`
+  color: ${isuzuTheme.text};
+`
+
 const Compare = () => {
   const dispatch = useDispatch()
 
@@ -141,6 +148,10 @@ const Compare = () => {
           Please select two vehicles that you want to compare
         </Message>
       )}
+      <Header>
+        <H1>Compare two vehicle</H1>
+        <Hr width="100%" />
+      </Header>
       <CompareWrapper>
         <Table>
           <Tbody>

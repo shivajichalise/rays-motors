@@ -116,7 +116,7 @@ const VehiclesList = () => {
                     </ButtonLink>
                     <ButtonAnchor
                       primary="primary"
-                      href={`/${vehicle.image.banner}`}
+                      href={`/${vehicle.brochure}`}
                       target="__blank"
                     >
                       Download Brochure

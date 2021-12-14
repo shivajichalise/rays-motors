@@ -105,7 +105,7 @@ const SplitBanner = () => {
           />
           <ImageContent>
             <p>Store</p>
-            <h1>Latest Arrivals</h1>
+            <h1>All Vehicles</h1>
             <ButtonLink to="/vehicles" primary="primary">
               Discover
             </ButtonLink>
