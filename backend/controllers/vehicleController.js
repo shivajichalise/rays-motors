@@ -92,6 +92,7 @@ const updatedVehicle = asyncHandler(async (req, res) => {
     slogan,
     description,
     image,
+    brochure,
     specifications: {
       engine,
       transmission,
@@ -124,6 +125,7 @@ const updatedVehicle = asyncHandler(async (req, res) => {
     vehicle.slogan = slogan
     vehicle.description = description
     vehicle.image = image
+    vehicle.brochure = brochure
     vehicle.specifications.engine = engine
     vehicle.specifications.transmission = transmission
     vehicle.specifications.suspension = suspension
