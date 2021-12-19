@@ -4,6 +4,10 @@
   "description": "Web App for Rays Motors",
   "main": "server.js",
   "type": "module",
+  "engine": {
+    "node": "14.x",
+    "npm": "8.x"
+  },
   "scripts": {
     "start": "node backend/server",
     "server": "nodemon backend/server",

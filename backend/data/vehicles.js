@@ -181,7 +181,7 @@ const vehicles = [
       banner: '../images/cars/banners/hilander.jpg',
       portrait: '../images/cars/portraits/hilander.jpg',
     },
-    brochure: '../brochures/hilander-brochure.pdf',
+    brochure: '../brochures/sample.pdf',
     specifications: {
       engine: {
         type: '4 Cylinder, Common Rail, VGS Turbo Intercooled Diesel',
@@ -353,7 +353,7 @@ const vehicles = [
       banner: '../images/cars/banners/vcross.jpg',
       portrait: '../images/cars/portraits/vcross.jpg',
     },
-    brochure: '../brochures/vcross-brochure.pdf',
+    brochure: '../brochures/sample.pdf',
     specifications: {
       engine: {
         type: '4 Cylinder, Common Rail, VGS Turbo Intercooled Diesel',
@@ -525,7 +525,7 @@ const vehicles = [
       banner: '../images/cars/banners/scab.jpg',
       portrait: '../images/cars/portraits/scab.jpg',
     },
-    brochure: '../brochures/scab-brochure.pdf',
+    brochure: '../brochures/sample.pdf',
     specifications: {
       engine: {
         type: '4 Cylinder, Common Rail, Turbo Intercooled Diesel',
