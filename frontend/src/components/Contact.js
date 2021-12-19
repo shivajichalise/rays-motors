@@ -48,6 +48,10 @@ const Wrapper = styled.div`
 
 const LeftColumn = styled.div`
   flex: 40%;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   background: ${isuzuTheme.red};
   order: 1;
 
@@ -67,6 +71,7 @@ const RightColumn = styled.div`
   order: 2;
 
   @media (max-width: 768px) {
+    width: 95vw;
     flex: 100%;
     order: 1;
   }
@@ -77,7 +82,7 @@ const IconWrapper = styled.div`
   justify-content: center;
   align-items: center;
   padding: 0.5rem;
-  border: 1px solid ${isuzuTheme.card};
+  border: 0.2px solid ${isuzuTheme.card};
   border-radius: 50%;
   margin: 1rem;
 `
@@ -143,6 +148,7 @@ const Table = styled.table`
 const FormButton = styled.button`
   background: ${isuzuTheme.red};
   padding: 10px 10px;
+  margin: 10px 0 0 0;
   border: none;
   border-radius: 4px;
   color: #fff;
@@ -157,6 +163,18 @@ const TextArea = styled.textarea`
   min-width: 300px;
   min-height: 100px;
   resize: none;
+`
+
+const Anchor = styled.a`
+  text-decoration: none;
+  color: #fff;
+  text-decoration: none;
+  margin-bottom: 0.5rem;
+
+  &:hover {
+    color: ${isuzuTheme.card};
+    transition: 0.3 ease-in-out;
+  }
 `
 
 const Contact = () => {
@@ -213,24 +231,42 @@ const Contact = () => {
         <H1 to="/">RAYS MOTORS</H1>
         <Wrapper>
           <LeftColumn>
-            <Heading>Lets get in touch</Heading>
+            <Heading>
+              <h3>Let's get in touch</h3>
+            </Heading>
             <ContactInfo>
               <IconWrapper>
                 <Location />
               </IconWrapper>
-              <Paragraph>Hari Chowk</Paragraph>
+              <Paragraph>
+                <Anchor
+                  href="https://goo.gl/maps/EWUQ2kWBRB3KDso36"
+                  target="_blank"
+                >
+                  Hari Chowk, Pokhara Lekhnath
+                </Anchor>
+              </Paragraph>
             </ContactInfo>
             <ContactInfo>
               <IconWrapper>
                 <Phone />
               </IconWrapper>
-              <Paragraph>+977 61-535444</Paragraph>
+
+              <Paragraph>
+                <Anchor href="tel:+9776153544" target="_blank">
+                  +977 61-535444
+                </Anchor>
+              </Paragraph>
             </ContactInfo>
             <ContactInfo>
               <IconWrapper>
                 <Mail />
               </IconWrapper>
-              <Paragraph>isuzupokhara@gmail.com</Paragraph>
+              <Paragraph>
+                <Anchor href="mailto:isuzupokhara@gmail.com" target="_blank">
+                  isuzupokhara@gmail.com
+                </Anchor>
+              </Paragraph>
             </ContactInfo>
           </LeftColumn>
           <RightColumn>
@@ -239,7 +275,7 @@ const Contact = () => {
                 <Table>
                   <tbody>
                     <tr>
-                      <td colSpan={2}>
+                      <td>
                         <FormInput
                           type="text"
                           name="customer_name"
@@ -249,7 +285,7 @@ const Contact = () => {
                       </td>
                     </tr>
                     <tr>
-                      <td colSpan={2}>
+                      <td>
                         <FormInput
                           type="text"
                           name="customer_email"
@@ -259,7 +295,7 @@ const Contact = () => {
                       </td>
                     </tr>
                     <tr>
-                      <td colSpan={2}>
+                      <td>
                         <FormInput
                           type="text"
                           name="subject"
@@ -269,7 +305,7 @@ const Contact = () => {
                       </td>
                     </tr>
                     <tr>
-                      <td colSpan={2}>
+                      <td>
                         <TextArea
                           placeholder="Your Message *"
                           name="message"
@@ -278,13 +314,15 @@ const Contact = () => {
                       </td>
                     </tr>
                     <tr>
-                      <td>
+                      <td align="right">
                         <ReCAPTCHA
                           sitekey="6Ld9nbccAAAAAAceiSh2tlbODOAnKO2jPHcvj3kR"
                           onChange={onChangeCaptcha}
                         />
                       </td>
-                      <td colSpan={2}>
+                    </tr>
+                    <tr>
+                      <td colSpan={2} align="right">
                         {isSending ? (
                           <LoaderMin />
                         ) : (
