@@ -13,10 +13,6 @@
     "data:destroy": "node backend/seeder -d",
     "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix frontend && npm run build --prefix frontend"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/shivajichalise/rays-motors.git"
-  },
   "keywords": [
     "Rays Motors",
     "Rays",
@@ -30,10 +26,6 @@
   ],
   "author": "Shivaji Chalise",
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/shivajichalise/rays-motors/issues"
-  },
-  "homepage": "https://github.com/shivajichalise/rays-motors#readme",
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "dotenv": "^10.0.0",
