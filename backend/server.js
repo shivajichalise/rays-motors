@@ -6,6 +6,7 @@ import connectDB from './config/db.js'
 import vehicleRoutes from './routes/vehicleRoutes.js'
 import userRoutes from './routes/userRoutes.js'
 import uploadRoutes from './routes/uploadRoutes.js'
+import fileRoutes from './routes/fileRoutes.js'
 
 dotenv.config()
 
@@ -18,6 +19,7 @@ app.use(express.json())
 app.use('/api/vehicles', vehicleRoutes)
 app.use('/api/users', userRoutes)
 app.use('/api/upload', uploadRoutes)
+app.use('/api/uploads', fileRoutes)
 
 const __dirname = path.resolve()
 app.use('/uploads', express.static(path.join(__dirname, '/uploads')))
