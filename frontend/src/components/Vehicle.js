@@ -164,10 +164,14 @@ const Vehicle = ({ id }) => {
                   <p>Get a Quote</p>
                 </OptionDiv>
                 <OptionDiv>
-                  <MenuLink to={vehicle.brochure} target="_blank">
+                  <MenuLink
+                    to={`/api${vehicle.brochure}`}
+                    target="_blank"
+                    download
+                  >
                     <Brochure />
                   </MenuLink>
-                  <p>Get a Brochure</p>
+                  <p>Get Brochure</p>
                 </OptionDiv>
               </MenuOption>
             </MenuWrapper>

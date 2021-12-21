@@ -378,6 +378,7 @@ const VehicleEdit = ({ match, history }) => {
     if (successUpdate) {
       dispatch({ type: VEHICLE_UPDATE_RESET })
       history.push('/admin/vehiclelist')
+      window.location.reload()
     } else {
       if (!vehicle.name || vehicle._id !== vehicleId) {
         dispatch(listVehicleDetails(vehicleId))

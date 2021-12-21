@@ -116,7 +116,7 @@ const VehiclesList = () => {
                     </ButtonLink>
                     <ButtonAnchor
                       primary="primary"
-                      href={`http://localhost:5000/api${vehicle.brochure}`}
+                      href={`/api${vehicle.brochure}`}
                       download
                     >
                       Download Brochure
