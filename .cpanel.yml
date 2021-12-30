@@ -6,7 +6,6 @@ deployment:
     - export BACKEND_DEPLOYPATH=/home6/raysmotors/backend/
     - /bin/cp -R frontend/build/* $FRONTEND_DEPLOYPATH
     - /bin/cp -R backend/* $BACKEND_DEPLOYPATH
-    - /bin/cp package.json $BACKEND_DEPLOYPATH
     - /bin/cp -R uploads $BACKEND_DEPLOYPATH/public/
     - /bin/cp .cpanel.yml $FRONTEND_DEPLOYPATH
     - source /home6/raysmotors/nodevenv/backend/14/bin/activate && cd /home6/raysmotors/backend
