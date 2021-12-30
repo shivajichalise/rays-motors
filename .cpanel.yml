@@ -4,10 +4,10 @@ deployment:
     - export ROOT_DEPLOY=/home6/raysmotors/public_html/raysmotors/
     - export FRONTEND_DEPLOYPATH=/home6/raysmotors/public_html/raysmotors/frontend/
     - export BACKEND_DEPLOYPATH=/home6/raysmotors/public_html/raysmotors/backend/
-    - /bin/cp -R frontend $FRONTEND_DEPLOYPATH
-    - /bin/cp -R backend $BACKEND_DEPLOYPATH
+    - /bin/cp -R frontend/* $FRONTEND_DEPLOYPATH
+    - /bin/cp -R backend/* $BACKEND_DEPLOYPATH
     - /bin/cp package.json $ROOT_DEPLOY
     - /bin/cp -R uploads $ROOT_DEPLOY
     - /bin/cp .cpanel.yml $ROOT_DEPLOY
     - source /home6/raysmotors/nodevenv/public_html/raysmotors/14/bin/activate && cd /home6/raysmotors/public_html/raysmotors
-    - npm install --prefix frontend && npm run build --prefix frontend && npm install
+    - npm install && npm install --prefix frontend/ && npm run build --prefix frontend/
