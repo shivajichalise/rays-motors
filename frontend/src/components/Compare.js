@@ -232,8 +232,12 @@ const Compare = () => {
                   <TD>{vehiclesCompare[1].specifications.engine.maxTorque}</TD>
                 </TR>
                 <TR>
-                  <TH className="header" colSpan={3}>
-                    Transmission
+                  <TH className="header"></TH>
+                  <TH className="header">
+                    {vehiclesCompare[0].name} Transmission
+                  </TH>
+                  <TH className="header">
+                    {vehiclesCompare[1].name} Transmission
                   </TH>
                 </TR>
                 <TR>
@@ -270,8 +274,12 @@ const Compare = () => {
                   </TD>
                 </TR>
                 <TR>
-                  <TH className="header" colSpan={3}>
-                    Suspension
+                  <TH className="header"></TH>
+                  <TH className="header">
+                    {vehiclesCompare[0].name} Suspension
+                  </TH>
+                  <TH className="header">
+                    {vehiclesCompare[1].name} Suspension
                   </TH>
                 </TR>
                 <TR>
@@ -285,9 +293,9 @@ const Compare = () => {
                   <TD>{vehiclesCompare[1].specifications.suspension.rear}</TD>
                 </TR>
                 <TR>
-                  <TH className="header" colSpan={3}>
-                    Wheel
-                  </TH>
+                  <TH className="header"></TH>
+                  <TH className="header">{vehiclesCompare[0].name} Wheel</TH>
+                  <TH className="header">{vehiclesCompare[1].name} Wheel</TH>
                 </TR>
                 <TR>
                   <TD>Tyre Size</TD>
@@ -305,9 +313,9 @@ const Compare = () => {
                   <TD>{vehiclesCompare[1].specifications.wheel.rimType}</TD>
                 </TR>
                 <TR>
-                  <TH className="header" colSpan={3}>
-                    Brakes
-                  </TH>
+                  <TH className="header"></TH>
+                  <TH className="header">{vehiclesCompare[0].name} Brakes</TH>
+                  <TH className="header">{vehiclesCompare[1].name} Brakes</TH>
                 </TR>
                 <TR>
                   <TD>Front Brake Type</TD>
@@ -328,9 +336,9 @@ const Compare = () => {
                   </TD>
                 </TR>
                 <TR>
-                  <TH className="header" colSpan={3}>
-                    Steering
-                  </TH>
+                  <TH className="header"></TH>
+                  <TH className="header">{vehiclesCompare[0].name} Steering</TH>
+                  <TH className="header">{vehiclesCompare[1].name} Steering</TH>
                 </TR>
                 <TR>
                   <TD>Steering Type</TD>
@@ -342,8 +350,12 @@ const Compare = () => {
                   </TD>
                 </TR>
                 <TR>
-                  <TH className="header" colSpan={3}>
-                    Dimensions
+                  <TH className="header"></TH>
+                  <TH className="header">
+                    {vehiclesCompare[0].name} Dimensions
+                  </TH>
+                  <TH className="header">
+                    {vehiclesCompare[1].name} Dimensions
                   </TH>
                 </TR>
                 <TR>
@@ -372,9 +384,9 @@ const Compare = () => {
                   <TD>{`${vehiclesCompare[1].specifications.dimensions.groundClearance.value} ${vehiclesCompare[1].specifications.dimensions.groundClearance.unit}`}</TD>
                 </TR>
                 <TR>
-                  <TH className="header" colSpan={3}>
-                    Capacity
-                  </TH>
+                  <TH className="header"></TH>
+                  <TH className="header">{vehiclesCompare[0].name} Capacity</TH>
+                  <TH className="header">{vehiclesCompare[1].name} Capacity</TH>
                 </TR>
                 <TR>
                   <TD>Deck Carrying Capacity</TD>
@@ -397,8 +409,12 @@ const Compare = () => {
                   <TD>{`${vehiclesCompare[1].specifications.capacity.fuelTank.value} ${vehiclesCompare[1].specifications.capacity.fuelTank.unit}`}</TD>
                 </TR>
                 <TR>
-                  <TH className="header" colSpan={3}>
-                    Comfort and Convenience
+                  <TH className="header"></TH>
+                  <TH className="header">
+                    {vehiclesCompare[0].name} Comfort & Convenience
+                  </TH>
+                  <TH className="header">
+                    {vehiclesCompare[1].name} Comfort & Convenience
                   </TH>
                 </TR>
                 <TR>
@@ -427,8 +443,12 @@ const Compare = () => {
                   </TD>
                 </TR>
                 <TR>
-                  <TH className="header" colSpan={3}>
-                    Safety and Security
+                  <TH className="header"></TH>
+                  <TH className="header">
+                    {vehiclesCompare[0].name} Safety & Security
+                  </TH>
+                  <TH className="header">
+                    {vehiclesCompare[1].name} Safety & Security
                   </TH>
                 </TR>
                 <TR>

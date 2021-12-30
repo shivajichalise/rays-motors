@@ -1,5 +1,6 @@
 {
   "name": "frontend",
+  "homepage": "http://raysmotors.com.np",
   "proxy": "http://127.0.0.1:5000",
   "version": "0.1.0",
   "private": true,
@@ -20,6 +21,9 @@
     "redux-devtools-extension": "^2.13.9",
     "redux-thunk": "^2.4.0",
     "styled-components": "^5.3.1",
+    "react-google-recaptcha": "^2.1.0",
+    "sweetalert2": "^11.3.0",
+    "sweetalert2-react-content": "^4.2.0",
     "web-vitals": "^1.1.2"
   },
   "scripts": {
