@@ -1,0 +1,1 @@
+{"version":3,"sources":["webpack://src/styles/addFont.css"],"names":[],"mappings":"AAAA,WACE,mBAAoB,CACpB,6EACF","file":"main.b11636f6.chunk.css","sourcesContent":["@font-face {\n  font-family: 'Usuzi';\n  src: local('Usuzi'), url(../fonts//usuziv2.ttf) format('truetype');\n}\n"]}

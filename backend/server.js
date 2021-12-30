@@ -22,13 +22,24 @@ app.use('/api/upload', uploadRoutes)
 app.use('/api/uploads', fileRoutes)
 
 const __dirname = path.resolve()
-app.use('/uploads', express.static(path.join(__dirname, '/uploads')))
+// app.use('/uploads', express.static(path.join(__dirname, '/uploads')))
+
+// below for cpanel deployment
+app.use('/uploads', express.static(path.join(__dirname, '/public/uploads')))
 
 if (process.env.NODE_ENV === 'production') {
-  app.use(express.static(path.join(__dirname, '/frontend/build')))
+  // app.use(express.static(path.join(__dirname, '/frontend/build')))
 
-  app.get('*', (req, res) =>
-    res.sendFile(path.resolve(__dirname, 'frontend', 'build', 'index.html'))
+  // below for cpanel deployment
+  app.use(express.static(path.join(__dirname, '../public_html')))
+
+  app.get(
+    '*',
+    (req, res) =>
+      res.sendFile(path.resolve(__dirname, 'frontend', 'build', 'index.html'))
+
+    // below for cpanel deployment
+    // res.sendFile(path.resolve(__dirname, '../public_html', 'index.html'))
   )
 } else {
   app.get('/', (req, res) => {

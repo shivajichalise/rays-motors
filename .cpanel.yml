@@ -2,12 +2,12 @@
 deployment:
   tasks:
     - export ROOT_DEPLOY=/home6/raysmotors/
-    - export FRONTEND_DEPLOYPATH=/home6/raysmotors/frontend
+    - export FRONTEND_DEPLOYPATH=/home6/raysmotors/public_html/
     - export BACKEND_DEPLOYPATH=/home6/raysmotors/backend/
-    - /bin/cp -R frontend/* $FRONTEND_DEPLOYPATH
+    - /bin/cp -R frontend/build/* $FRONTEND_DEPLOYPATH
     - /bin/cp -R backend/* $BACKEND_DEPLOYPATH
-    - /bin/cp package.json $ROOT_DEPLOY
-    - /bin/cp -R uploads $ROOT_DEPLOY
-    - /bin/cp .cpanel.yml $ROOT_DEPLOY
-    - source /home6/raysmotors/nodevenv/backend/14/bin/activate && cd /home6/raysmotors/
-    - NPM_CONFIG_PRODUCTION=false npm install --prefix frontend && npm run build --prefix frontend
+    - /bin/cp package.json $BACKEND_DEPLOYPATH
+    - /bin/cp -R uploads $BACKEND_DEPLOYPATH/public/
+    - /bin/cp .cpanel.yml $FRONTEND_DEPLOYPATH
+    - source /home6/raysmotors/nodevenv/backend/14/bin/activate && cd /home6/raysmotors/backend
+    - npm install

@@ -9,7 +9,11 @@ const __dirname = path.resolve()
 // @access  Public
 
 const getAllFiles = asyncHandler(async (req, res) => {
-  const directoryPath = __dirname + '/uploads/'
+  // const directoryPath = __dirname + '/uploads/'
+
+  // below for cpanel deployment
+  const directoryPath = __dirname + '/public/uploads/'
+
   fs.readdir(directoryPath, (err, files) => {
     if (err) {
       res.status(500).json({ message: 'Error getting uploaded files' })
@@ -33,7 +37,11 @@ const getAllFiles = asyncHandler(async (req, res) => {
 
 const getFileByName = asyncHandler(async (req, res) => {
   const fileName = req.params.name
-  const directoryPath = __dirname + '/uploads/'
+  // const directoryPath = __dirname + '/uploads/'
+
+  // below for cpanel deployment
+  const directoryPath = __dirname + '/public/uploads/'
+
   res.status(200)
   res.download(directoryPath + fileName, fileName, (err) => {
     if (err) {
