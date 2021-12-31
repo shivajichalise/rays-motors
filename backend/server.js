@@ -33,15 +33,13 @@ if (process.env.NODE_ENV === 'production') {
   // below for cpanel deployment
   app.use(express.static(path.join(__dirname, '../public_html')))
 
-  app.get(
-    '*',
-    (req, res) =>
-      res.sendFile(
-        path.resolve(__dirname, '../frontend', 'build', 'index.html')
-      )
+  app.get('*', (req, res) =>
+    // res.sendFile(
+    //   path.resolve(__dirname, '../frontend', 'build', 'index.html')
+    // )
 
     // below for cpanel deployment
-    // res.sendFile(path.resolve(__dirname, '../public_html', 'index.html'))
+    res.sendFile(path.resolve(__dirname, '../public_html', 'index.html'))
   )
 } else {
   app.get('/', (req, res) => {
