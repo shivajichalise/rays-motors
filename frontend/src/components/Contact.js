@@ -243,7 +243,7 @@ const Contact = () => {
                   href="https://goo.gl/maps/EWUQ2kWBRB3KDso36"
                   target="_blank"
                 >
-                  Hari Chowk, Pokhara Lekhnath
+                  Uttam Chowk - 10, Pokhara Lekhnath
                 </Anchor>
               </Paragraph>
             </ContactInfo>
