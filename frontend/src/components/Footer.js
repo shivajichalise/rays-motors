@@ -166,9 +166,9 @@ const Footer = () => {
             <Anchor href="https://www.facebook.com/raysmotors" target="_blank">
               Facebook
             </Anchor>
-            <Anchor href="https://www.instagram.com/raysmotors" target="_blank">
-              Instagram
-            </Anchor>
+            {/* <Anchor href="https://www.instagram.com/raysmotors" target="_blank"> */}
+            {/*   Instagram */}
+            {/* </Anchor> */}
           </FooterLinkItems>
         </FooterLinksContainer>
         <SocialMedia>
