@@ -147,11 +147,14 @@ const Footer = () => {
             </FooterLinkItems>
             <FooterLinkItems>
               <FooterLinkTitle>CONTACT US</FooterLinkTitle>
-              <Anchor href="tel:+977-9856023793" target="_blank">
-                +977-9856023793
+              <Anchor href="tel:061-537333" target="_blank">
+                061-537333
               </Anchor>
-              <Anchor href="mailto:isuzupokhara@gmail.com" target="_blank">
-                isuzupokhara@gmail.com
+              <Anchor href="tel:061-535444" target="_blank">
+                061-535444
+              </Anchor>
+              <Anchor href="mailto:info@raysmotors.com.np" target="_blank">
+                info@raysmotors.com.np
               </Anchor>
               <Anchor
                 href="https://goo.gl/maps/EWUQ2kWBRB3KDso36"

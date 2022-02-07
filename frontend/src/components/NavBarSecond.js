@@ -194,8 +194,8 @@ const NavBar = ({ navData, toggle }) => {
             061-535444
           </PhoneLink>
           {','}
-          <PhoneLink href="tel:+977-9856023793" target="_blank">
-            +977-9856023793
+          <PhoneLink href="tel:061-537333" target="_blank">
+            061-537333
           </PhoneLink>
         </Phone>
         <Address>

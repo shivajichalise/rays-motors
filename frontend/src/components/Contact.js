@@ -263,8 +263,8 @@ const Contact = () => {
                 <Mail />
               </IconWrapper>
               <Paragraph>
-                <Anchor href="mailto:isuzupokhara@gmail.com" target="_blank">
-                  isuzupokhara@gmail.com
+                <Anchor href="mailto:info@raysmotors.com.np" target="_blank">
+                  info@raysmotors.com.np
                 </Anchor>
               </Paragraph>
             </ContactInfo>
