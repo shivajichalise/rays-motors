@@ -151,6 +151,7 @@ const Vehicle = ({ id }) => {
             <MenuWrapper>
               <MenuHead>
                 <h1 className="useIsuzuFont">{vehicle.name}</h1>
+                <p>{vehicle.variant}</p>
                 <i>{vehicle.slogan}</i>
               </MenuHead>
               <MenuContent>

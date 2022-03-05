@@ -2,6 +2,7 @@ export const vehicleSample = {
   name: 'Sample Vehicle',
   slug: 'scab',
   slogan: 'Sample Slogan',
+  variant: 'Sample Variant',
   description: 'Sample Description',
   image: {
     banner: '../images/cars/banners/sample.jpg',
