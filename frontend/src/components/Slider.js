@@ -166,18 +166,18 @@ const Slider = () => {
     fetchVehicles()
   }, [])
 
-  // useEffect(() => {
-  //   const nextSlide = () => {
-  //     setCurrent((current) => (current === length - 1 ? 0 : current + 1))
-  //   }
+  useEffect(() => {
+    const nextSlide = () => {
+      setCurrent((current) => (current === length - 1 ? 0 : current + 1))
+    }
 
-  //   timeout.current = setTimeout(nextSlide, 5000)
-  //   return function () {
-  //     if (timeout.current) {
-  //       clearTimeout(timeout.current)
-  //     }
-  //   }
-  // }, [current, length])
+    timeout.current = setTimeout(nextSlide, 5000)
+    return function () {
+      if (timeout.current) {
+        clearTimeout(timeout.current)
+      }
+    }
+  }, [current, length])
 
   const nextSlide = () => {
     if (timeout.current) {

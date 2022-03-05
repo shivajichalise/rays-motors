@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import img1 from '../images/cars/d-max-doubleCab.jpg'
-import img2 from '../images/cars/isuzu-truck-sqr.jpg'
+import img2 from '../images/cars/hilander_sqr.jpg'
 import { motion } from 'framer-motion'
 import { ButtonAnchor, ButtonLink } from './Button'
 import { isuzuTheme } from '../styles/theme'
@@ -99,7 +99,7 @@ const SplitBanner = () => {
         <LatestVehicle>
           <Image
             src={img1}
-            alt="asda"
+            alt="DMAX"
             whileHover={{ scale: 1.1 }}
             transition={{ duration: 2 }}
           />
@@ -114,7 +114,7 @@ const SplitBanner = () => {
         <IsuzuNews>
           <Image
             src={img2}
-            alt="asda"
+            alt="DMAX"
             whileHover={{ scale: 1.1 }}
             transition={{ duration: 2 }}
           />

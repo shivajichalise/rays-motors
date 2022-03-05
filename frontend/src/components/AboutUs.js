@@ -1,11 +1,11 @@
 import React from 'react'
 import styled from 'styled-components'
-import isuzuLogo from '../images/isuzu-logo-sqr.png'
+import isuzuLogo from '../images/isuzu-logo-sqr-redbg.jpg'
 import { isuzuTheme } from '../styles/theme'
 
 const AboutContainer = styled.div`
   background: ${isuzuTheme.background};
-  height: 100vh;
+  height: 115vh;
   width: 100vw;
   display: flex;
   justify-content: center;
@@ -22,7 +22,7 @@ const AboutWrapper = styled.div`
   position: relative;
 
   @media screen and (max-width: 768px) {
-    height: 95%;
+    height: 98%;
     width: 95%;
   }
 `
@@ -30,7 +30,7 @@ const AboutWrapper = styled.div`
 const Info = styled.div`
   background: ${isuzuTheme.card};
   width: 100%;
-  height: 80%;
+  height: 77%;
 
   display: flex;
   align-items: center;
@@ -49,7 +49,7 @@ const InfoContent = styled.div`
   color: ${isuzuTheme.text};
 
   p {
-    margin: 0 0 1rem 0;
+    margin: 0 0 0.4rem 0;
   }
 
   h1,
@@ -66,15 +66,15 @@ const InfoContent = styled.div`
   }
 
   @media screen and (max-width: 375px) and (max-height: 667px) {
-    font-size: 0.83rem;
+    font-size: 0.63rem;
   }
 
   @media screen and (max-width: 360px) {
-    font-size: 0.85rem;
+    font-size: 0.65rem;
   }
 
   @media screen and (max-width: 320px) {
-    font-size: 0.7rem;
+    font-size: 0.5rem;
   }
 `
 
@@ -115,8 +115,13 @@ const AboutUs = () => {
 
             <h3>About ISUZU</h3>
             <p>
-              ISUZU has the ambitious vision to minimize environmental impacts
-              and secure a prosperous and sustainable society by year 2050.
+              ISUZU is a Japanese automaker that builds commercial vehicles,
+              utility vehicles, and diesel engines which are sold in over 100
+              countries worldwide. To provide a worry-free ownership experience,
+              ISUZU offers a 3-year/100,000 km manufacturer's warranty. ISUZU
+              has set an ambitious goal of eliminating environmental
+              consequences and ensuring a thriving and sustainable society by
+              2050.
             </p>
 
             <i>Power to "Deliver" for people around the world.</i>

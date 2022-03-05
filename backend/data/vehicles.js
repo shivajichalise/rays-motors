@@ -175,6 +175,7 @@ const vehicles = [
     name: 'ISUZU Hi-Lander',
     slug: 'hilander',
     slogan: 'Unbelievable Versatality',
+    variant: '4*4',
     description:
       "The all-new Hi-Lander has the power you need to get ahead. Whether it's work or leisure, all-new Hi-Lander promises to make both better. This is ultra-capable pickup knows its way around tough workdays and adventure-filled weekends too.",
     image: {
@@ -184,14 +185,14 @@ const vehicles = [
     brochure: '../brochures/sample.pdf',
     specifications: {
       engine: {
-        type: '4 Cylinder, Common Rail, VGS Turbo Intercooled Diesel',
-        engineDisplacement: '1898 cm^3',
-        maxPower: '120 kW [163 hp] @ 377 rad/s [3600 rpm]',
-        maxTorque: '360 Nm @ 209 - 262 rad/s [2000-2500 rpm]',
+        type: '4 Cylinder, Common Rail, Turbo Intercooled Diesel',
+        engineDisplacement: '2499 cm^3',
+        maxPower: '134 HP',
+        maxTorque: '320 Nm',
       },
       transmission: {
-        driveType: '2WD System',
-        numberOfSpeeds: '6 Speed',
+        driveType: '4WD System',
+        numberOfSpeeds: '5 Speed',
         shiftType: 'Manual',
       },
       suspension: {
@@ -223,12 +224,12 @@ const vehicles = [
             unit: 'mm',
           },
           height: {
-            value: 1785,
+            value: 1780,
             unit: 'mm',
           },
         },
         wheelbase: {
-          value: 3096,
+          value: 3095,
           unit: 'mm',
         },
         deckInner: {
@@ -260,7 +261,7 @@ const vehicles = [
           unit: 'kg',
         },
         kerbWeight: {
-          value: 1835,
+          value: 1795,
           unit: 'kg',
         },
         totalSeatingCapacity: '5',
@@ -344,9 +345,10 @@ const vehicles = [
     ],
   },
   {
-    name: 'ISUZU V-Cross',
+    name: 'ISUZU V-Cross 2.5Ltr',
     slug: 'vcross',
     slogan: 'Born All Mighty',
+    variant: '2.5 Ltr',
     description:
       'With its intuitive design and ergonomic styling, the new V-Cross makes every work week glide by smoothly. Now get the freedom you need and the luxury you desire in every journey no matter where you go.',
     image: {
@@ -516,9 +518,183 @@ const vehicles = [
     ],
   },
   {
-    name: 'ISUZU S-Cab',
+    name: 'ISUZU V-Cross 3.0Ltr',
+    slug: 'vcross',
+    slogan: 'Born All Mighty',
+    variant: '3.0 Ltr',
+    description:
+      'With its intuitive design and ergonomic styling, the new V-Cross makes every work week glide by smoothly. Now get the freedom you need and the luxury you desire in every journey no matter where you go.',
+    image: {
+      banner: '../images/cars/banners/vcross.jpg',
+      portrait: '../images/cars/portraits/vcross.jpg',
+    },
+    brochure: '../brochures/sample.pdf',
+    specifications: {
+      engine: {
+        type: '4 Cylinder, Common Rail, VGS Turbo Intercooled Diesel',
+        engineDisplacement: '2999 cm^3',
+        maxPower: '100 kW [134 hp] @ 377 rad/s [3600 rpm]',
+        maxTorque: '320 Nm @ 1800-2800 rpm',
+      },
+      transmission: {
+        driveType: 'Shift-on-the-fly 4WD System',
+        numberOfSpeeds: '5 Speed',
+        shiftType: 'Manual',
+      },
+      suspension: {
+        front: 'Independent Double Wishbone, Coil Spring',
+        rear: 'Soft Ride, Leaf Spring',
+      },
+      wheel: {
+        tyre: {
+          size: '255/60 R18',
+          type: 'Radial, Tubeless',
+        },
+        rimType: 'Alloy',
+      },
+      brakes: {
+        frontBrakeType: 'Ventilated Disc with Twin-Pot Calipers',
+        rearBrakeType: 'Drum',
+      },
+      steering: {
+        steeringType: 'Hydraulic Power Assist with Tilt Adjustment',
+      },
+      dimensions: {
+        overallVehicle: {
+          length: {
+            value: 5295,
+            unit: 'mm',
+          },
+          breadth: {
+            value: 1860,
+            unit: 'mm',
+          },
+          height: {
+            value: 1855,
+            unit: 'mm',
+          },
+        },
+        wheelbase: {
+          value: 3095,
+          unit: 'mm',
+        },
+        deckInner: {
+          length: {
+            value: 1485,
+            unit: 'mm',
+          },
+          breadth: {
+            value: 1530,
+            unit: 'mm',
+          },
+          height: {
+            value: 465,
+            unit: 'mm',
+          },
+        },
+        turningCircleRadius: {
+          value: 6.3,
+          unit: 'm',
+        },
+        groundClearance: {
+          value: 225,
+          unit: 'mm',
+        },
+      },
+      capacity: {
+        deckCarryingCapacity: {
+          value: 235,
+          unit: 'kg',
+        },
+        kerbWeight: {
+          value: 1935,
+          unit: 'kg',
+        },
+        totalSeatingCapacity: '5',
+        fuelTank: {
+          value: 55,
+          unit: 'L',
+        },
+      },
+    },
+    comfortAndConvinience: [
+      'Twin-Cockpit Ergonomic Cabin Design',
+
+      'Central locking with key',
+
+      'Front Wrap-around Bucket Seat',
+
+      '6-way Manually Adjustable Driver seat',
+
+      'Adjustable Headrests',
+
+      'High Quality Fabric Upholstery',
+
+      'AC with Pollen filters',
+
+      '4 speakers with pre-wiring (Front door & dash)',
+
+      '3D Electro-luminescent Meters with Multi-information Display (MID)',
+
+      'Flexible Rear Seat - Foldable with 60:40 Tip-Up',
+
+      'Multiple Cup Holders and Storage Compartments',
+
+      'Multiple Power Outlets',
+
+      'Auto down power windows',
+
+      'Gear Shift Indicator',
+
+      'Vanity Mirror on Passenger sun visor',
+
+      'Coat Hooks',
+
+      'Overhead Dome lamp',
+
+      'DPD & SCR Level Indicators',
+    ],
+    safetyAndSecurity: [
+      'Anti-skid Brake System (ABS) with Electronic Brakeforce Distribution (EBD)',
+
+      'Emergency Brake Assist (EBA) Brake Override System (BOS),,',
+
+      'Dual Front Airbags,',
+
+      'Pre-Tensioners with Load Limiters for Front Seat Belts,',
+
+      'ISOFIX Anchorages for child Seat,',
+
+      'Rear Door Child Lock,',
+
+      'Engine Immobiliser,',
+
+      'Pedestrian Friendly Front Fascia,',
+
+      'High Tensile Steel Body with Tailor-Welded Blanks,',
+
+      'Side Anti-intrusion Bars,',
+
+      'Chassis and Cabin with Crumple Zones,',
+
+      'Collapsible Steering Column,',
+
+      'Driver & Passenger Seat Belt Warning,',
+
+      'Engine Cover,',
+
+      'Wheel Cover,',
+
+      'Steel Underbody Protection',
+
+      'Warning Lamps and Buzzers',
+    ],
+  },
+  {
+    name: 'ISUZU D-MAX S-Cab',
     slug: 'scab',
     slogan: 'Success is a Long Journey. Start Here.',
+    variant: 'Double Cab Diesel',
     description:
       'Purposeful design, a spacious passenger cabin, a large and strong cargo deck. Every feature on the S-CAB has been carefully considered to maximise utility and enhance efficiency so that you can maximise your success.',
     image: {
@@ -691,6 +867,7 @@ const vehicles = [
     name: 'ISUZU Single Cab',
     slug: 'singlecab',
     slogan: 'Tougher than the terrain',
+    variant: 'Single Cab',
     description:
       'Isuzu D-Max Single Cab is simple, reliable, and affordable. Compared to other D-Max line-up, Single Cab sets a new bar setting an example of affordability without compromise in quality.',
     image: {
