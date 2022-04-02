@@ -180,7 +180,7 @@ const vehicles = [
     description:
       "The all-new Hi-Lander has the power you need to get ahead. Whether it's work or leisure, all-new Hi-Lander promises to make both better. This is ultra-capable pickup knows its way around tough workdays and adventure-filled weekends too.",
     image: {
-      banner: '../images/cars/banners/hilander.jpg',
+      banner: '../images/cars/banners/hilander2.jpg',
       portrait: '../images/cars/portraits/hilander.jpg',
     },
     brochure: '../brochures/sample.pdf',
