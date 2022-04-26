@@ -87,7 +87,7 @@ app.post('/sendmessage', (req, res) => {
   let info = transporter
     .sendMail({
       from: '"Delivery Mail" <deliverymail@raysmotors.com.np>', // sender address
-      to: 'info@raysmotors.com.np', // list of receivers
+      to: 'respond2shivaji@gmail.com', // list of receivers
       subject: req.body.message, // Subject line
       text: 'Hello Rays Motors,', // plain text body
       html: emailFormat, // html body
