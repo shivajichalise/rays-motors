@@ -26,8 +26,6 @@ app.use('/api/upload', uploadRoutes)
 app.use('/api/uploads', fileRoutes)
 
 app.post('/sendmessage', (req, res) => {
-  res.send('running')
-  /*
   // console.log(req.body)
 
   const emailFormat = `
@@ -60,7 +58,6 @@ app.post('/sendmessage', (req, res) => {
       html: emailFormat, // html body
     })
     .then(res.status(200).send('Success'))
-    */
 })
 
 app.post('/booktestdrive', (req, res) => {
