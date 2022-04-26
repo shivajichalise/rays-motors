@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react'
+import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
 import { useDispatch, useSelector } from 'react-redux'
 import { listVehicles } from '../actions/vehicleActions'
@@ -8,8 +8,8 @@ import Loader from './Loader'
 import LoaderMin from './LoaderMin'
 import Swal from 'sweetalert2'
 import withReactContent from 'sweetalert2-react-content'
-import emailjs from 'emailjs-com'
 import ReCAPTCHA from 'react-google-recaptcha'
+import axios from 'axios'
 
 const QuoteContainer = styled.div`
   background: ${isuzuTheme.card};
@@ -97,37 +97,41 @@ const TextArea = styled.textarea`
 const GetQuote = () => {
   const MySwal = withReactContent(Swal)
 
-  const form = useRef()
-
   const [isSending, setIsSending] = useState(false)
   const [isVerified, setIsVerified] = useState(false)
+
+  const [customerName, setCustomerName] = useState('')
+  const [customerEmail, setCustomerEmail] = useState('')
+  const [selectedVehicle, setSelectedVehicle] = useState('')
+  const [message, setMessage] = useState('')
 
   const submitHandler = (e) => {
     setIsSending(true)
     e.preventDefault()
-    emailjs
-      .sendForm(
-        'service_t5dokeo',
-        'template_07y31yi',
-        form.current,
-        'user_R1GcPi2XjFqNdrvoCg3LW'
-      )
-      .then(
-        (result) => {
-          MySwal.fire({
-            icon: 'success',
-            title: 'Great!',
-            text: "We just recieved your request for quotation. We'll get back to you ASAP.",
-          })
-        },
-        (error) => {
-          MySwal.fire({
-            icon: 'error',
-            title: 'Oops...',
-            text: 'Something went wrong! Please try again later.',
-          })
-        }
-      )
+
+    const payload = {
+      name: customerName,
+      email: customerEmail,
+      vehicle: selectedVehicle,
+      message,
+    }
+
+    axios
+      .post('/quote', payload)
+      .then((response) => {
+        MySwal.fire({
+          icon: 'success',
+          title: 'Great!',
+          text: "Thanks for reaching out to us. We'll get back to you ASAP.",
+        })
+      })
+      .catch((error) => {
+        MySwal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: 'Something went wrong! Please try again later.',
+        })
+      })
       .then(
         (result) => {
           setIsSending(false)
@@ -164,8 +168,13 @@ const GetQuote = () => {
           <h1>{error}</h1>
         ) : (
           <FormWrapper>
-            <Form ref={form} onSubmit={submitHandler}>
-              <Select defaultValue={'DEFAULT'} name="vehicle_name" required>
+            <Form onSubmit={submitHandler}>
+              <Select
+                defaultValue={'DEFAULT'}
+                name="vehicle_name"
+                onChange={(e) => setSelectedVehicle(e.target.value)}
+                required
+              >
                 <option value="DEFAULT" disabled>
                   Choose Model *
                 </option>
@@ -179,15 +188,21 @@ const GetQuote = () => {
                 type="text"
                 name="customer_name"
                 placeholder="Your Name *"
+                onChange={(e) => setCustomerName(e.target.value)}
                 required
               />
               <FormInput
                 type="text"
                 name="customer_email"
                 placeholder="Your Email *"
+                onChange={(e) => setCustomerEmail(e.target.value)}
                 required
               />
-              <TextArea name="message" placeholder="Your Message *"></TextArea>
+              <TextArea
+                name="message"
+                placeholder="Your Message *"
+                onChange={(e) => setMessage(e.target.value)}
+              ></TextArea>
               <ReCAPTCHA
                 sitekey="6Ld9nbccAAAAAAceiSh2tlbODOAnKO2jPHcvj3kR"
                 onChange={onChangeCaptcha}
