@@ -25,7 +25,7 @@ app.use('/api/users', userRoutes)
 app.use('/api/upload', uploadRoutes)
 app.use('/api/uploads', fileRoutes)
 
-app.post('/quote', (req, res) => {
+app.post('/askquote', (req, res) => {
   // console.log(req.body)
   const emailFormat = `
     <p>Customer ${req.body.name} has requested a quotation for vehicle: ${req.body.vehicle} </p>

@@ -117,7 +117,7 @@ const GetQuote = () => {
     }
 
     axios
-      .post('/quote', payload)
+      .post('/askquote', payload)
       .then((response) => {
         MySwal.fire({
           icon: 'success',
