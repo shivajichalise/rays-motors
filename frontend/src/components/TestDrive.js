@@ -1,4 +1,6 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { listVehicles } from '../actions/vehicleActions'
 import styled, { css } from 'styled-components/macro'
 import { Link } from 'react-router-dom'
 import { isuzuTheme } from '../styles/theme'
@@ -28,9 +30,15 @@ const ContactPageWrapper = styled.div`
   align-items: center;
 `
 
-const H1 = styled(Link)`
+const H3 = styled.h3`
   font-family: Usuzi;
-  font-size: 2.2rem;
+  color: ${isuzuTheme.text};
+  text-decoration: none;
+`
+
+const H = styled(Link)`
+  font-family: Usuzi;
+  font-size: 1.5rem;
   color: ${isuzuTheme.red};
   text-decoration: none;
 `
@@ -111,6 +119,12 @@ const Paragraph = styled.p`
   word-break: break-all;
 `
 
+const Paragraph2 = styled.p`
+  padding: 0 0 1rem 0;
+  color: ${isuzuTheme.text};
+  word-break: break-word;
+`
+
 const Heading = styled.div`
   padding: 1rem;
   color: ${isuzuTheme.card};
@@ -141,6 +155,13 @@ const FormInput = styled.input`
   border-radius: 4px;
 `
 
+const Checkbox = styled.input`
+  // padding: 16px 16px;
+  margin: 0 0.4rem 0rem 0rem;
+  border: none;
+  border-radius: 4px;
+`
+
 const Table = styled.table`
   width: 100%;
 `
@@ -155,16 +176,6 @@ const FormButton = styled.button`
   cursor: pointer;
 `
 
-const TextArea = styled.textarea`
-  padding: 16px 16px;
-  border: none;
-  border-radius: 4px;
-  width: 100%;
-  min-width: 300px;
-  min-height: 100px;
-  resize: none;
-`
-
 const Anchor = styled.a`
   text-decoration: none;
   color: #fff;
@@ -176,8 +187,31 @@ const Anchor = styled.a`
     transition: 0.3 ease-in-out;
   }
 `
+const Select = styled.select`
+  padding: 16px 16px;
+  margin: 0 0 0.5rem 0;
+  width: 100%;
+  border: none;
+  border-radius: 4px;
+
+  color: ${isuzuTheme.text};
+  width: 100%;
+  background: ${isuzuTheme.grey};
+  border: 1px solid #dddddd;
+  cursor: pointer;
+
+  &:hover {
+    outline: none;
+    border: 1px solid #bbbbbb;
+  }
+`
 
 const Contact = () => {
+  const dispatch = useDispatch()
+
+  const vehicleList = useSelector((state) => state.vehicleList)
+  const { loading, error, vehicles } = vehicleList
+
   const MySwal = withReactContent(Swal)
 
   const [isSending, setIsSending] = useState(false)
@@ -185,8 +219,8 @@ const Contact = () => {
 
   const [customerName, setCustomerName] = useState('')
   const [customerEmail, setCustomerEmail] = useState('')
-  const [subject, setSubject] = useState('')
-  const [message, setMessage] = useState('')
+  const [customerPhone, setCustomerPhone] = useState('')
+  const [selectedVehicle, setSelectedVehicle] = useState('')
 
   const submitHandler = (e) => {
     setIsSending(true)
@@ -195,12 +229,12 @@ const Contact = () => {
     const payload = {
       name: customerName,
       email: customerEmail,
-      subject,
-      message,
+      phone: customerPhone,
+      vehicle: selectedVehicle,
     }
 
     axios
-      .post('/sendmessage', payload)
+      .post('/booktestdrive', payload)
       .then((response) => {
         MySwal.fire({
           icon: 'success',
@@ -223,20 +257,34 @@ const Contact = () => {
           setIsSending(false)
         }
       )
+
     e.target.reset()
   }
 
   const onChangeCaptcha = () => {
     setIsVerified(true)
   }
+
+  useEffect(() => {
+    if (vehicles.length === 0) {
+      dispatch(listVehicles())
+    }
+
+    // if (vehiclesCompare && vehiclesCompare.length !== 0) {
+    //   setLeftVehicle({ ...vehiclesCompare[0] })
+    //   setRightVehicle({ ...vehiclesCompare[1] })
+    // }
+  }, [dispatch, vehicles.length])
+
   return (
     <ContactPageContainer>
       <ContactPageWrapper>
-        <H1 to="/">RAYS MOTORS</H1>
+        <H to="/">RAYS MOTORS</H>
+        <H3>Book a test drive</H3>
         <Wrapper>
           <LeftColumn>
             <Heading>
-              <h3>Let's get in touch</h3>
+              <h3>Reach us:</h3>
             </Heading>
             <ContactInfo>
               <IconWrapper>
@@ -279,18 +327,29 @@ const Contact = () => {
                 <Table>
                   <tbody>
                     <tr>
-                      <td>
+                      <td colSpan="2">
                         <FormInput
                           type="text"
                           name="customer_name"
                           placeholder="Your Name *"
-                          onChange={(e) => setCustomerName(e.target.value)}
                           required
+                          onChange={(e) => setCustomerName(e.target.value)}
                         />
                       </td>
                     </tr>
                     <tr>
-                      <td>
+                      <td colSpan="2">
+                        <FormInput
+                          type="phone"
+                          name="customer_phone"
+                          placeholder="Your Phone no. *"
+                          required
+                          onChange={(e) => setCustomerPhone(e.target.value)}
+                        />
+                      </td>
+                    </tr>
+                    <tr>
+                      <td colSpan="2">
                         <FormInput
                           type="email"
                           name="customer_email"
@@ -301,24 +360,32 @@ const Contact = () => {
                       </td>
                     </tr>
                     <tr>
-                      <td>
-                        <FormInput
-                          type="text"
-                          name="subject"
-                          placeholder="Subject *"
-                          onChange={(e) => setSubject(e.target.value)}
+                      <td colSpan="2">
+                        <Select
+                          defaultValue={'DEFAULT'}
+                          name="vehicle"
+                          onChange={(e) => setSelectedVehicle(e.target.value)}
                           required
-                        />
+                        >
+                          <option value="DEFAULT" disabled>
+                            Choose Model *
+                          </option>
+                          {vehicles.map((v, index) => (
+                            <option key={index} value={v.name}>
+                              {v.name}
+                            </option>
+                          ))}
+                        </Select>
                       </td>
                     </tr>
                     <tr>
                       <td>
-                        <TextArea
-                          placeholder="Your Message *"
-                          name="message"
-                          onChange={(e) => setMessage(e.target.value)}
-                          required
-                        />
+                        <Paragraph2>
+                          <Checkbox type="checkbox" required />I agree that by
+                          clicking on "Submit", I am explicitly soliciting a
+                          call from ISUZU Motors or its associates on my mobile
+                          number to assist me in purchasing ISUZU Vehicles.
+                        </Paragraph2>
                       </td>
                     </tr>
                     <tr>
@@ -335,7 +402,7 @@ const Contact = () => {
                           <LoaderMin />
                         ) : (
                           <FormButton type="submit" disabled={!isVerified}>
-                            Send Message
+                            Submit
                           </FormButton>
                         )}
                       </td>

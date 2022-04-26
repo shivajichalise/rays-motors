@@ -4,6 +4,7 @@ import SingleVehicle from './pages/SingleVehicle'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import GetQuote from './pages/GetQuote'
 import ContactPage from './pages/Contact'
+import TestDrivePage from './pages/TestDrive'
 import ComparePage from './pages/ComparePage'
 import LoginPage from './pages/LoginPage'
 import RegisterPage from './pages/RegisterPage'
@@ -22,6 +23,7 @@ function App() {
         <Route path="/vehicles/:id" component={SingleVehicle} exact />
         <Route path="/quote" component={GetQuote} exact />
         <Route path="/contact" component={ContactPage} exact />
+        <Route path="/testdrive" component={TestDrivePage} exact />
         <Route path="/compare" component={ComparePage} exact />
         <Route path="/login" component={LoginPage} exact />
         <Route path="/register" component={RegisterPage} exact />

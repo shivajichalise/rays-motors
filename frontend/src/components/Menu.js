@@ -1,6 +1,6 @@
 import React from 'react'
 import styled, { css } from 'styled-components/macro'
-import { MdRequestQuote, MdCompare } from 'react-icons/md'
+import { MdRequestQuote, MdCompare, MdOutlineBookmarkAdd } from 'react-icons/md'
 import { FaTruckPickup } from 'react-icons/fa'
 import { RiBookletFill } from 'react-icons/ri'
 import { isuzuTheme } from '../styles/theme'
@@ -39,7 +39,7 @@ const MenuOption = styled.div`
 `
 
 const OptionDiv = styled.div`
-  flex: 25%;
+  flex: 15%;
 
   display: flex;
   flex-direction: column;
@@ -87,6 +87,10 @@ const Compare = styled(MdCompare)`
   ${OptionCss}
 `
 
+const BookTestDrive = styled(MdOutlineBookmarkAdd)`
+  ${OptionCss}
+`
+
 const Menu = () => {
   return (
     <MenuContainer id="shopping-tools">
@@ -118,6 +122,12 @@ const Menu = () => {
               <Compare />
             </MenuLink>
             <p>Compare Vehicles</p>
+          </OptionDiv>
+          <OptionDiv>
+            <MenuLink to="/testdrive">
+              <BookTestDrive />
+            </MenuLink>
+            <p>Book Test Drive</p>
           </OptionDiv>
         </MenuOption>
       </MenuWrapper>
