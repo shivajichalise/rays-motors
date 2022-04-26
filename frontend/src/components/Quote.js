@@ -95,6 +95,11 @@ const TextArea = styled.textarea`
   resize: none;
 `
 const GetQuote = () => {
+  const dispatch = useDispatch()
+
+  const vehicleList = useSelector((state) => state.vehicleList)
+  const { loading, error, vehicles } = vehicleList
+
   const MySwal = withReactContent(Swal)
 
   const [isSending, setIsSending] = useState(false)
@@ -146,10 +151,6 @@ const GetQuote = () => {
   const onChangeCaptcha = () => {
     setIsVerified(true)
   }
-
-  const dispatch = useDispatch()
-  const vehicleList = useSelector((state) => state.vehicleList)
-  const { loading, error, vehicles } = vehicleList
 
   useEffect(() => {
     dispatch(listVehicles())
