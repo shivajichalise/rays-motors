@@ -46,9 +46,6 @@ app.post('/sendmessage', (req, res) => {
       user: 'deliverymail@raysmotors.com.np',
       pass: 'E-A)q[{pZ5cC',
     },
-    tls: {
-      rejectUnauthorized: false,
-    },
   })
 
   // send mail with defined transport object
@@ -83,9 +80,6 @@ app.post('/booktestdrive', (req, res) => {
     auth: {
       user: 'deliverymail@raysmotors.com.np',
       pass: 'E-A)q[{pZ5cC',
-    },
-    tls: {
-      rejectUnauthorized: false,
     },
   })
 
