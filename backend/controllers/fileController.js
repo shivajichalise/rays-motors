@@ -16,7 +16,7 @@ const getAllFiles = asyncHandler(async (req, res) => {
 
   fs.readdir(directoryPath, (err, files) => {
     if (err) {
-      res.status(500).json({ message: 'Error getting uploaded files' })
+      res.status(500).json({message: 'Error getting uploaded files'})
     }
 
     let fetchedFiles = []
@@ -45,9 +45,9 @@ const getFileByName = asyncHandler(async (req, res) => {
   res.status(200)
   res.download(directoryPath + fileName, fileName, (err) => {
     if (err) {
-      res.status(500).json({ message: 'Error getting the file' })
+      res.status(500).json({message: 'Error getting the file'})
     }
   })
 })
 
-export { getFileByName, getAllFiles }
+export {getFileByName, getAllFiles}

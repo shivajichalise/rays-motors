@@ -1,7 +1,7 @@
 import path from 'path'
 import express from 'express'
 import multer from 'multer'
-import { getFileByName } from '../controllers/fileController.js'
+import {getFileByName} from '../controllers/fileController.js'
 
 const router = express.Router()
 

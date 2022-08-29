@@ -2,7 +2,7 @@ import path from 'path'
 import express from 'express'
 import bodyParser from 'body-parser'
 import dotenv from 'dotenv'
-import { notFound, errorHandler } from './middleware/errorMiddleware.js'
+import {notFound, errorHandler} from './middleware/errorMiddleware.js'
 import connectDB from './config/db.js'
 import vehicleRoutes from './routes/vehicleRoutes.js'
 import userRoutes from './routes/userRoutes.js'
@@ -17,7 +17,7 @@ connectDB()
 const app = express()
 
 app.use(express.json())
-app.use(bodyParser.urlencoded({ extended: false }))
+app.use(bodyParser.urlencoded({extended: false}))
 app.use(bodyParser.json())
 
 app.use('/api/vehicles', vehicleRoutes)
